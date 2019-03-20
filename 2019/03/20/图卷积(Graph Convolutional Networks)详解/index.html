@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="图卷积 (Graph Convolutional Networks) 详解 参考 Kipf and Welling.  Semi-Supervised Classification with Graph Convolutional Networks. ICLR. 2017 1. 拉普拉斯特征映射与谱聚类 由于后续的GCN模型中用到了正则化的拉普拉斯矩阵，所以我对这一部分的知识进行了补充。 内容主要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ML is awesome">
+<meta property="og:title" content="Semi-GCN详解">
 <meta property="og:url" content="https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/index.html">
 <meta property="og:site_name" content="ML is awesome">
 <meta property="og:description" content="图卷积 (Graph Convolutional Networks) 详解 参考 Kipf and Welling.  Semi-Supervised Classification with Graph Convolutional Networks. ICLR. 2017 1. 拉普拉斯特征映射与谱聚类 由于后续的GCN模型中用到了正则化的拉普拉斯矩阵，所以我对这一部分的知识进行了补充。 内容主要">
@@ -24,9 +24,9 @@
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/s3MXfNyblmrjeCtqap32XD.Z3P9XusEALi9yLsvoIWk!/r/dL4AAAAAAAAA&ynotemdtimestamp=1545279693625">
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/hfhs*e1qqd7HyKfIPdqiOTma1CnYU3ki1DuQKBUjWxA!/r/dMMAAAAAAAAA&ynotemdtimestamp=1545279693625">
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/rIyuOfX1SHnaLYlhrQHRr5S1zqrv.4FHHASdv6KsgGg!/r/dDQBAAAAAAAA&ynotemdtimestamp=1545279693625">
-<meta property="og:updated_time" content="2019-03-20T10:44:30.879Z">
+<meta property="og:updated_time" content="2019-03-20T11:00:24.144Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ML is awesome">
+<meta name="twitter:title" content="Semi-GCN详解">
 <meta name="twitter:description" content="图卷积 (Graph Convolutional Networks) 详解 参考 Kipf and Welling.  Semi-Supervised Classification with Graph Convolutional Networks. ICLR. 2017 1. 拉普拉斯特征映射与谱聚类 由于后续的GCN模型中用到了正则化的拉普拉斯矩阵，所以我对这一部分的知识进行了补充。 内容主要">
 <meta name="twitter:image" content="https://math.jianshu.com/math?formula=A_1%2C...%2CA_k">
     
@@ -48,7 +48,7 @@
         
     
     <!-- title -->
-    <title>ML is awesome</title>
+    <title>Semi-GCN详解</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- rss -->
@@ -95,15 +95,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&text="><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&is_video=false&description="><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&name=&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&text=Semi-GCN详解"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&is_video=false&description=Semi-GCN详解"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Semi-GCN详解&body=Check out this article: https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&name=Semi-GCN详解&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -120,7 +120,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        
+        Semi-GCN详解
     </h1>
 
 
@@ -131,7 +131,7 @@
       </span>
       
     <div class="postdate">
-        <time datetime="2019-03-20T10:20:32.821Z" itemprop="datePublished">2019-03-20</time>
+        <time datetime="2019-03-19T16:00:00.000Z" itemprop="datePublished">2019-03-20</time>
     </div>
 
 
@@ -155,19 +155,19 @@
 <p>接下来，首先介绍<code>RatioCut</code>方法是如何做到子图切割的。<br>拿到一个图，我们如何进行切割才能得到最优的结果呢？显然在切割的时候，需要切断图中的一些边，那么可以想到用边上的权值作为度量，尽可能去切那些权值比较小的边，因为权值较小的边意味着两个节点之间的关联(相似性)较弱。我们以”被切断的边的权值之和最小”作为目标函数，将其形式化的表示如下：</p>
 <hr>
 <p>设<img src="https://math.jianshu.com/math?formula=A_1%2C...%2CA_k" alt="A_1,...,A_k">为图划分子集，为了让分割的效果最好，便要最小化下面的损失函数:</p>
-<p>​                            <script type="math/tex">cut(A_1,...,A_k):=\frac{1}{2}\sum_{i=1}^kW(A_i, \overline A_i)</script></p>
-<p>其中$k$表示分割子图数量，$A_i$表示第$i$个分割子图，$\overline A_i$表示$A_i$的补集，$W(A_i, \overline A_i)$表示分割子图与之间的所有边的权重之和。</p>
+<script type="math/tex; mode=display">
+cut(A_1,...,A_k):=\frac{1}{2}\sum_{i=1}^kW(A_i, \overline A_i)</script><p>其中$k$表示分割子图数量，$A_i$表示第$i$个分割子图，$\overline A_i$表示$A_i$的补集，$W(A_i, \overline A_i)$表示分割子图与之间的所有边的权重之和。</p>
 <hr>
 <p>然而，这种方法通常会导致一些意外的结果。由于损失函数没有限制，该方法往往会将图分成一个点和其余n-1个点。如下图所示。 </p>
 <p><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/INfTHW0hNm7Lq0owF4iAn*OdFLHf92*Ucob4Lcf7vbY!/r/dMEAAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"><br>为了克服这一问题，我们可以在损失函数中加入分割子图Ai的大小这一限制，使得损失函数在最小化的同时保证各个分割子图具有合理的大小。公式表示如下：</p>
-<p>​                    <script type="math/tex">RatioCut(A_1,...,A_k):=\frac{1}{2}\sum_{i=1}^k\frac{W(A_i,\overline A_i)}{|A_i|}=\sum_{i=1}^k\frac{cut(A_i,\overline A_i)}{|A_i|}</script></p>
-<p>其中$|A_i|$表示分割子图$A_i$中包含的顶点数。</p>
+<script type="math/tex; mode=display">
+RatioCut(A_1,...,A_k):=\frac{1}{2}\sum_{i=1}^k\frac{W(A_i,\overline A_i)}{|A_i|}=\sum_{i=1}^k\frac{cut(A_i,\overline A_i)}{|A_i|}</script><p>其中$|A_i|$表示分割子图$A_i$中包含的顶点数。</p>
 <hr>
 <p>改进后的方法就是上面提到的<code>RatioCut</code>方法，后面的两类方法不多做介绍。接下来我们将要探讨拉普拉斯矩阵与谱聚类的关系，更详细一点，拉普拉斯矩阵与<code>RatioCut</code>方法的关联。</p>
 <h3 id="1-2-拉普拉斯矩阵"><a href="#1-2-拉普拉斯矩阵" class="headerlink" title="1.2 拉普拉斯矩阵"></a>1.2 拉普拉斯矩阵</h3><p>首先介绍拉普拉斯矩阵的定义和相关性质(后文会用到)。</p>
 <h4 id="1-2-1-定义"><a href="#1-2-1-定义" class="headerlink" title="1.2.1 定义"></a>1.2.1 定义</h4><p>拉普拉斯矩阵式表示图的一种矩阵，给定一个图 $G = (V, E)$，其拉普拉斯矩阵的定义如下：</p>
-<p>​                                        <script type="math/tex">L = D - A</script></p>
-<p>其中$D$为图的度矩阵，$A$为图的邻接矩阵。 举个例子，给定如下的图：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/*2t*Mz8iBKrtyqCZFxX8UnTOCJTK7.Mg5QFYzyydTtI!/r/dLwAAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"><br>邻接矩阵<code>A</code>表示为：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/glFhogklUHho4UgrbyyQE9i53KlJtDSBhOcra81Oa88!/r/dDQBAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"><br>计算图中每个节点的度，并将它们放在主对角线上，组成一个对角矩阵，记为度矩阵<code>D</code>，如下所示：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/ljcOjAn32vnTRWt4JgpTy1sEZ3iWZlAVpyvA1Jl.9tk!/r/dL0AAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"><br>根据拉普拉斯矩阵的定义，可以计算出拉普拉斯矩阵<code>L</code>：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/0z*aTIE4*kO7SGHIOi4eWhGytfceuo4QNw97tV79*Nc!/r/dLgAAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"></p>
+<script type="math/tex; mode=display">
+L = D - A</script><p>其中$D$为图的度矩阵，$A$为图的邻接矩阵。 举个例子，给定如下的图：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/*2t*Mz8iBKrtyqCZFxX8UnTOCJTK7.Mg5QFYzyydTtI!/r/dLwAAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"><br>邻接矩阵<code>A</code>表示为：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/glFhogklUHho4UgrbyyQE9i53KlJtDSBhOcra81Oa88!/r/dDQBAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"><br>计算图中每个节点的度，并将它们放在主对角线上，组成一个对角矩阵，记为度矩阵<code>D</code>，如下所示：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/ljcOjAn32vnTRWt4JgpTy1sEZ3iWZlAVpyvA1Jl.9tk!/r/dL0AAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"><br>根据拉普拉斯矩阵的定义，可以计算出拉普拉斯矩阵<code>L</code>：<br><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/0z*aTIE4*kO7SGHIOi4eWhGytfceuo4QNw97tV79*Nc!/r/dLgAAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image"></p>
 <h4 id="1-2-2-性质"><a href="#1-2-2-性质" class="headerlink" title="1.2.2 性质"></a>1.2.2 性质</h4><p>拉普拉斯矩阵L具有如下性质：</p>
 <ol>
 <li>$L$是对称半正定矩阵</li>
@@ -177,21 +177,33 @@
 <p><img src="https://math.jianshu.com/math?formula=0%20%3D%20%5Clambda_1%20%5Cleq%20...%20%5Cleq%20%5Clambda_n" alt="0 = \lambda_1 \leq ... \leq \lambda_n"></p>
 <ol>
 <li><p>对于任何一个实向量$f=f(f_i,…,f_n)’ \in \mathbb R^n$，有以下式子成立：</p>
-<p>​                                <script type="math/tex">f'Lf=\frac{1}{2}\sum_{i,j=1}^Nw_{ij}(f_i - f_j)^2</script></p>
-<p>​                         <script type="math/tex">where \  L=D-W, d_i = \sum_{j=1}^nw_{ij},W(A,B) := \sum_{i\in A,j\in B}w_{ij}</script></p>
-</li>
+<p>​                    </p>
+<script type="math/tex; mode=display">
+f'Lf=\frac{1}{2}\sum_{i,j=1}^Nw_{ij}(f_i - f_j)^2  \\ 
+where \  L=D-W, d_i = \sum_{j=1}^nw_{ij},W(A,B) := \sum_{i\in A,j\in B}w_{ij}</script></li>
 </ol>
 <p>下面，给出上述结论的证明。</p>
-<p>​                        <script type="math/tex">f'Lf= f'Df - f'Wf = \sum_{i=1}^nd_if_i^2-\sum_{i,j=1}^nf_if_jw_{ij}</script></p>
-<p>​                        <script type="math/tex">=\frac{1}{2}(\sum_{i=1}^nd_if_i^2-2\sum_{i,j=1}^nf_if_jw_{ij}+\sum_{j=1}^nd_if_j^2)</script></p>
-<h3 id="1-3-RatioCut与拉普拉斯矩阵的关联"><a href="#1-3-RatioCut与拉普拉斯矩阵的关联" class="headerlink" title="1.3 RatioCut与拉普拉斯矩阵的关联"></a>1.3 RatioCut与拉普拉斯矩阵的关联</h3><p>回到上面的<code>RatioCut</code>方法，其优化式子表示如下：</p>
-<p>​                        <script type="math/tex">\min_{A \subset V}RatioCut(A,\overline A)</script></p>
-<p>定义向量</p>
-<script type="math/tex; mode=display">f = (f_1,...,f_n)' \in R^n, and : f_i = \begin{cases} \sqrt{|\overline A|/|A|}&if & v_i \in A \\ -\sqrt{|A|/|\overline A|} & if & v_i \in \overline A \end{cases}</script><p>根据之前得到的拉普拉斯矩阵的性质，有</p>
-<script type="math/tex; mode=display">f'Lf = \frac12\sum_{i,j=1}^Nw_{ij}(f_i-f_j)^2</script><p>将\(f_i\)带入上式，得：</p>
-<script type="math/tex; mode=display">f'Lf = \frac12\sum_{i,j=1}^Nw_{ij}(f_i-f_j)^2</script><script type="math/tex; mode=display">=\frac12\sum_{i\in A,j\in\overline A}w_{ij}(\sqrt{\frac {|\overline A|}{|A|}}+\sqrt{\frac {|A|}{|\overline A|}})^2 + \sum_{i\in \overline A,j\in A}w_{ij}(-\sqrt{\frac {|\overline A|}{|A|}}-\sqrt{\frac {|A|}{|\overline A|}})^2</script><script type="math/tex; mode=display">=cut(A,\overline A)(\frac{|\overline A|}{|A|} + \frac{|A|}{|\overline A|}+2)</script><script type="math/tex; mode=display">=cut(A,\overline A)(\frac{|A|+|\overline A|}{|A|} + \frac{|A|+|\overline A|}{|\overline A|})   \</script><script type="math/tex; mode=display">=|V| RatioCut(A,\overline A)</script><p>可以发现，我们从$f’Lf$推导出了<code>RatioCut</code>。也就是说拉普拉斯矩阵L和我们要优化的目标<code>RatioCut</code>有着密切的联系。由于这里$|V|$是一个常量，所以最小化<code>RatioCut</code>函数，等价于最小化$f’Lf$。<br>同时由于单位向量$\vec e$的各个元素全为1，所以可以直接展开得到约束条件：</p>
-<script type="math/tex; mode=display">||f||^2=\sum f_i^2 = n \space and \space f'\vec e = \sum f_i = 0</script><p>如此一来，我们可以将目标函数写成如下形式：</p>
-<script type="math/tex; mode=display">\min_{f\in \mathbb R^n} f'Lf</script><script type="math/tex; mode=display">s.t. \space f \perp \vec e, ||f|| = \sqrt n</script><p>根据特征值和特征向量的定义，我们可以对上面的优化目标进行转换。假设 $Lf = \lambda f$，即认为$\lambda$和$f$分别为$L$的特征值和对应的特征向量。两边同时左乘$f’$，可以得到$f’Lf=\lambda f’f=\lambda n$<br>因此，最小化$f’Lf$等价于最小化$\lambda$。所以接下来我们只需要找到$L$的最小特征值$λ$及其对应的特征向量即可。<br>然而，拉普拉斯矩阵的最小特征值为0，对应的特征向量正好为$\vec e$，不满足约束条件。根据<code>Rayleigh-Ritz</code>理论(<a href="http://engr.case.edu/ray_soumya/mlrg/Luxburg07_tutorial_spectral_clustering.pdf" target="_blank" rel="noopener"><code>A Tutorial on Spectral Clustering</code></a>)，我们可以取第二小的特征值。<br>更进一步，如果我们取拉普拉斯矩阵的前K个特征向量，进行K-means聚类，便从二聚类扩展到了K聚类。<br>这样，就将离散求解$f=f(f_1,…,f_n)’\in \mathbb R^n$这一困难的NP问题转换成拉普拉斯矩阵特征值(向量)的问题，将离散的聚类问题松弛为连续的特征向量。最小的系列特征向量对应着图的最优系列划分，对特征向量进行划分，再离散回对应的类别即可。<br>关于拉普拉斯矩阵的理解：拉普拉斯矩阵实际上是将图中的节点进行了一次映射，这种映射增强了节点的聚集属性(cluster-properties)，这也解释了为什么我们无法通过邻接矩阵<code>AA</code>来做子图划分，而可以直接利用拉普拉斯矩阵的特征向量来完成(细节部分参考<a href="http://engr.case.edu/ray_soumya/mlrg/Luxburg07_tutorial_spectral_clustering.pdf" target="_blank" rel="noopener"><code>A Tutorial on Spectral Clustering</code></a>)。此外，在图形学领域，为了保留像素之间的空间结构化信息，拉普拉斯矩阵还被用来做平滑(参考<a href="https://blog.csdn.net/bbbeoy/article/details/71249310" target="_blank" rel="noopener"><code>博客</code></a>)。</p>
+<p>​                        </p>
+<script type="math/tex; mode=display">
+f'Lf= f'Df - f'Wf = \sum_{i=1}^nd_if_i^2-\sum_{i,j=1}^nf_if_jw_{ij} \\
+=\frac{1}{2}(\sum_{i=1}^nd_if_i^2-2\sum_{i,j=1}^nf_if_jw_{ij}+\sum_{j=1}^nd_if_j^2)</script><h3 id="1-3-RatioCut与拉普拉斯矩阵的关联"><a href="#1-3-RatioCut与拉普拉斯矩阵的关联" class="headerlink" title="1.3 RatioCut与拉普拉斯矩阵的关联"></a>1.3 RatioCut与拉普拉斯矩阵的关联</h3><p>回到上面的<code>RatioCut</code>方法，其优化式子表示如下：</p>
+<script type="math/tex; mode=display">
+\min_{A \subset V}RatioCut(A,\overline A)</script><p>定义向量</p>
+<script type="math/tex; mode=display">
+f = (f_1,...,f_n)' \in R^n, and : f_i = \begin{cases} \sqrt{|\overline A|/|A|}&if & v_i \in A \\ -\sqrt{|A|/|\overline A|} & if & v_i \in \overline A \end{cases}</script><p>根据之前得到的拉普拉斯矩阵的性质，有</p>
+<script type="math/tex; mode=display">
+f'Lf = \frac12\sum_{i,j=1}^Nw_{ij}(f_i-f_j)^2</script><p>将$f_i$带入上式，得：</p>
+<script type="math/tex; mode=display">
+f'Lf = \frac12\sum_{i,j=1}^Nw_{ij}(f_i-f_j)^2 \\
+=\frac12\sum_{i\in A,j\in\overline A}w_{ij}(\sqrt{\frac {|\overline A|}{|A|}}+\sqrt{\frac {|A|}{|\overline A|}})^2 + \sum_{i\in \overline A,j\in A}w_{ij}(-\sqrt{\frac {|\overline A|}{|A|}}-\sqrt{\frac {|A|}{|\overline A|}})^2 \\
+=cut(A,\overline A)(\frac{|\overline A|}{|A|} + \frac{|A|}{|\overline A|}+2)  \\
+=cut(A,\overline A)(\frac{|A|+|\overline A|}{|A|} + \frac{|A|+|\overline A|}{|\overline A|}) \\
+=|V| RatioCut(A,\overline A)</script><p>可以发现，我们从$f’Lf$推导出了<code>RatioCut</code>。也就是说拉普拉斯矩阵L和我们要优化的目标<code>RatioCut</code>有着密切的联系。由于这里$|V|$是一个常量，所以最小化<code>RatioCut</code>函数，等价于最小化$f’Lf$。<br>同时由于单位向量$\vec e$的各个元素全为1，所以可以直接展开得到约束条件：</p>
+<script type="math/tex; mode=display">
+||f||^2=\sum f_i^2 = n \space and \space f'\vec e = \sum f_i = 0</script><p>如此一来，我们可以将目标函数写成如下形式：</p>
+<script type="math/tex; mode=display">
+\min_{f\in \mathbb R^n} f'Lf \\
+s.t. \space f \perp \vec e, ||f|| = \sqrt n</script><p>根据特征值和特征向量的定义，我们可以对上面的优化目标进行转换。假设 $Lf = \lambda f$，即认为$\lambda$和$f$分别为$L$的特征值和对应的特征向量。两边同时左乘$f’$，可以得到$f’Lf=\lambda f’f=\lambda n$。<br>因此，最小化$f’Lf$等价于最小化$\lambda$。所以接下来我们只需要找到$L$的最小特征值$λ$及其对应的特征向量即可。<br>然而，拉普拉斯矩阵的最小特征值为0，对应的特征向量正好为$\vec e$，不满足约束条件。根据<code>Rayleigh-Ritz</code>理论(<a href="http://engr.case.edu/ray_soumya/mlrg/Luxburg07_tutorial_spectral_clustering.pdf" target="_blank" rel="noopener"><code>A Tutorial on Spectral Clustering</code></a>)，我们可以取第二小的特征值。<br>更进一步，如果我们取拉普拉斯矩阵的前K个特征向量，进行K-means聚类，便从二聚类扩展到了K聚类。<br>这样，就将离散求解$f=f(f_1,…,f_n)’\in \mathbb R^n$这一困难的NP问题转换成拉普拉斯矩阵特征值(向量)的问题，将离散的聚类问题松弛为连续的特征向量。最小的系列特征向量对应着图的最优系列划分，对特征向量进行划分，再离散回对应的类别即可。<br>关于拉普拉斯矩阵的理解：拉普拉斯矩阵实际上是将图中的节点进行了一次映射，这种映射增强了节点的聚集属性(cluster-properties)，这也解释了为什么我们无法通过邻接矩阵<code>AA</code>来做子图划分，而可以直接利用拉普拉斯矩阵的特征向量来完成(细节部分参考<a href="http://engr.case.edu/ray_soumya/mlrg/Luxburg07_tutorial_spectral_clustering.pdf" target="_blank" rel="noopener"><code>A Tutorial on Spectral Clustering</code></a>)。此外，在图形学领域，为了保留像素之间的空间结构化信息，拉普拉斯矩阵还被用来做平滑(参考<a href="https://blog.csdn.net/bbbeoy/article/details/71249310" target="_blank" rel="noopener"><code>博客</code></a>)。</p>
 <h2 id="2-图卷积的定义"><a href="#2-图卷积的定义" class="headerlink" title="2. 图卷积的定义"></a>2. 图卷积的定义</h2><p>介绍完基础的谱聚类背景知识，接来下开始介绍图卷积模型。目前大多数基于图结构的神经网络都遵从一个通用的结构，因此我们把这一类模型统称为图卷积网络。图卷积之所以被称为卷积是因为过滤器的参数通常会在图中的所有位置共享。这一类模型的目的是为了从图 $G = (V, E)$ 中学习一个关于信号/特征的函数，模型的输入输出表示如下。</p>
 <hr>
 <p>输入：</p>
@@ -203,26 +215,35 @@
 <p>-节点层面的输出$Z$，$Z$是一个$N \times F$的特征矩阵，其中$F$为每个节点的输出特征维度</p>
 <hr>
 <p>神经网络可以用一个非线性的函数来形式化表示：</p>
-<script type="math/tex; mode=display">H^{(l+1)} = f(H^{(l)}, A)</script><p>将这个函数对应到图卷积模型，这里的$H^{(0)}=X$，$H^{(L)}=Z$，$L$为神经网络的层数。</p>
+<script type="math/tex; mode=display">
+H^{(l+1)} = f(H^{(l)}, A)</script><p>将这个函数对应到图卷积模型，这里的$H^{(0)}=X$，$H^{(L)}=Z$，$L$为神经网络的层数。</p>
 <h2 id="3-图卷积模型详解"><a href="#3-图卷积模型详解" class="headerlink" title="3. 图卷积模型详解"></a>3. 图卷积模型详解</h2><h3 id="3-1-快速卷积"><a href="#3-1-快速卷积" class="headerlink" title="3.1 快速卷积"></a>3.1 快速卷积</h3><p>我们举一个简单的例子来描述GCN。将GCN模型的传播规则简化描述如下：</p>
-<script type="math/tex; mode=display">H^{(l+1)} = \sigma(AH^{(l)}W^{l})</script><p>其中$W^{(l)}$为神经网络第l层的权重矩阵，$\sigma (·)$为一个非线性的激活函数(例如ReLU函数)。 这里有两个限制，第一个在于上式乘以$A$代表着，对于每一个节点，我们将其邻居节点的所有特征向量进行了加和(sum up)，而没有考虑节点本身。这一限制可以通过给加一个$A$单位阵来解决(即强制自环)。此外，$A$矩阵是没有正则化的，因此乘以$A$会完全改变特征向量的尺度。这一限制可以通过给<code>AA</code>进行正则化，即使得$A$的所有行加和等于1，如$D^{-1}A$, 其中$D$为度矩阵。乘以$D^{-1}A$这一步骤所对应的物理意义是取相邻节点特征的平均值。实际上，在使用对称标准化时动力学会更为明显，例如$D^{-1/2}AD^{-1/2}$(参考<a href="https://people.orie.cornell.edu/dpw/orie6334/lecture7.pdf" target="_blank" rel="noopener"><code>Spectral Graph Theory</code></a>)。因为这不再是单纯取邻居节点的特征（待弄清楚）<br>由此可以得出<a href="https://arxiv.org/abs/1609.02907" target="_blank" rel="noopener"><code>Kipf&amp;Welling(ICLR 2017)</code></a>论文中的传播规则：</p>
-<script type="math/tex; mode=display">f(H^{(l)}, A) = \sigma (D^{-1/2}\hat AD^{-1/2}H^{(l)}W^{(l)})</script><h3 id="3-2-谱图卷积"><a href="#3-2-谱图卷积" class="headerlink" title="3.2 谱图卷积"></a>3.2 谱图卷积</h3><p>图卷积按映射域不同可以分为直接卷积和谱卷积两类，这篇问题是基于谱卷积的方法。在谱图卷积中，需要使用一个过滤器$g_{\theta}=diag(\theta)$，而原来的图数据在这里被替换成了频率信号$x \in \mathbb R^N$(对于每个节点而言是一个标量)。详细公式如下：</p>
-<script type="math/tex; mode=display">g_{\theta} \bigotimes x= Ug_{\theta}U^{\tau}x</script><p>其中$U$为正则化拉普拉斯矩阵$L=I_N-D^{-1/2}AD^{-1/2}=U\Lambda U^{\tau}$的特征向量矩阵，$U^{\tau}x$则表示对$x$进行傅里叶变换。这里滤波器$g_{\theta}$可以看作一个关于$L$特征值的函数，例如$g_\theta (\Lambda)$。但是计算量会非常大，其一是对$U$做乘法时间复杂度很大；其二是如果数据很大，对$L$做特征分解也需要大量时间。因此作者利用了对切比雪夫多项式做截断来近似地估计$g_\theta (\Lambda)$。 公式如下：</p>
-<script type="math/tex; mode=display">g_{\theta'}(\Lambda) \approx \sum_{k=0}^K\theta_k'T_k(\hat \Lambda)</script><p>其中，$\hat \Lambda=\frac2{\lambda_{max}}\Lambda-I_N$。 $\lambda_{max}$为拉普拉斯矩阵$L$的最大特征值。$\theta’\in \mathbb R^K$为切比雪夫多项式的系数向量。切比雪夫多项式的递归定义为$T_k(x)=2xT_{k-1}(x)-T_{k-2}(x),with\space T_0(x)=1\space and\space T_1(x)=x$<br>(参考<a href="https://arxiv.org/abs/0912.3848" target="_blank" rel="noopener">Hammond et al.</a>)<br>将上述式子结合可以得到谱卷积模型的卷积定义：</p>
-<p>$g_{\theta’} \bigotimes x\approx \sum_{k=0}^K\theta_k’T_k(\hat L)x$</p>
-<p>其中$\hat L=\frac2{\lambda_{max}}L-I_N$；由于这里截取了前K项，因此上式仅仅却决距离中心节点最大步长为K的节点(K阶邻域)。这就是<a href="https://arxiv.org/pdf/1606.09375.pdf/" target="_blank" rel="noopener"><code>Michaël et al,. NIPS 16</code></a>的谱卷积工作。</p>
+<script type="math/tex; mode=display">
+H^{(l+1)} = \sigma(AH^{(l)}W^{l})</script><p>其中$W^{(l)}$为神经网络第l层的权重矩阵，$\sigma (·)$为一个非线性的激活函数(例如ReLU函数)。 这里有两个限制，第一个在于上式乘以$A$代表着，对于每一个节点，我们将其邻居节点的所有特征向量进行了加和(sum up)，而没有考虑节点本身。这一限制可以通过给加一个$A$单位阵来解决(即强制自环)。此外，$A$矩阵是没有正则化的，因此乘以$A$会完全改变特征向量的尺度。这一限制可以通过给<code>AA</code>进行正则化，即使得$A$的所有行加和等于1，如$D^{-1}A$, 其中$D$为度矩阵。乘以$D^{-1}A$这一步骤所对应的物理意义是取相邻节点特征的平均值。实际上，在使用对称标准化时动力学会更为明显，例如$D^{-1/2}AD^{-1/2}$(参考<a href="https://people.orie.cornell.edu/dpw/orie6334/lecture7.pdf" target="_blank" rel="noopener"><code>Spectral Graph Theory</code></a>)。因为这不再是单纯取邻居节点的特征（待弄清楚）<br>由此可以得出<a href="https://arxiv.org/abs/1609.02907" target="_blank" rel="noopener"><code>Kipf&amp;Welling(ICLR 2017)</code></a>论文中的传播规则：</p>
+<script type="math/tex; mode=display">
+f(H^{(l)}, A) = \sigma (D^{-1/2}\hat AD^{-1/2}H^{(l)}W^{(l)})</script><h3 id="3-2-谱图卷积"><a href="#3-2-谱图卷积" class="headerlink" title="3.2 谱图卷积"></a>3.2 谱图卷积</h3><p>图卷积按映射域不同可以分为直接卷积和谱卷积两类，这篇问题是基于谱卷积的方法。在谱图卷积中，需要使用一个过滤器$g_{\theta}=diag(\theta)$，而原来的图数据在这里被替换成了频率信号$x \in \mathbb R^N$(对于每个节点而言是一个标量)。详细公式如下：</p>
+<script type="math/tex; mode=display">
+g_{\theta} \bigotimes x= Ug_{\theta}U^{\tau}x</script><p>其中$U$为正则化拉普拉斯矩阵$L=I_N-D^{-1/2}AD^{-1/2}=U\Lambda U^{\tau}$的特征向量矩阵，$U^{\tau}x$则表示对$x$进行傅里叶变换。这里滤波器$g_{\theta}$可以看作一个关于$L$特征值的函数，例如$g_\theta (\Lambda)$。但是计算量会非常大，其一是对$U$做乘法时间复杂度很大；其二是如果数据很大，对$L$做特征分解也需要大量时间。因此作者利用了对切比雪夫多项式做截断来近似地估计$g_\theta (\Lambda)$。 公式如下：</p>
+<script type="math/tex; mode=display">
+g_{\theta'}(\Lambda) \approx \sum_{k=0}^K\theta_k'T_k(\hat \Lambda)</script><p>其中，$\hat \Lambda=\frac2{\lambda_{max}}\Lambda-I_N$。 $\lambda_{max}$为拉普拉斯矩阵$L$的最大特征值。$\theta’\in \mathbb R^K$为切比雪夫多项式的系数向量。切比雪夫多项式的递归定义为$T_k(x)=2xT_{k-1}(x)-T_{k-2}(x),with\space T_0(x)=1\space and\space T_1(x)=x$<br>(参考<a href="https://arxiv.org/abs/0912.3848" target="_blank" rel="noopener">Hammond et al.</a>)<br>将上述式子结合可以得到谱卷积模型的卷积定义：</p>
+<script type="math/tex; mode=display">
+g_{\theta'} \bigotimes x\approx \sum_{k=0}^K\theta_k'T_k(\hat L)x</script><p>其中$\hat L=\frac2{\lambda_{max}}L-I_N$；由于这里截取了前K项，因此上式仅仅却决距离中心节点最大步长为K的节点(K阶邻域)。这就是<a href="https://arxiv.org/pdf/1606.09375.pdf/" target="_blank" rel="noopener"><code>Michaël et al,. NIPS 16</code></a>的谱卷积工作。</p>
 <h3 id="3-3-Layer-wise线性模型"><a href="#3-3-Layer-wise线性模型" class="headerlink" title="3.3 Layer-wise线性模型"></a>3.3 Layer-wise线性模型</h3><p>从上式可以看出，基于图卷积的神经网络模型可以通过叠加多个卷积层，每层加入一个逐点非线性(可以理解成ReLU激活函数)。论文中限制$K=1$，因此原函数可以视为一个关于拉普拉斯矩阵$L$的线性函数。<br>直观上可以预期模型在处理节点度分布非常广的图时，缓解对局部邻域结构的过拟合问题。此外，在计算资源受限的情况下，这种分层线性公式允许我们构建一些更深的网络模型，这一点在解决其他领域的问题上已经有所体现。 由于正则化拉普拉斯矩阵的特征值范围为[0, 2]，这里我们近似地认为$\lambda_{max} \approx 2$，将模型卷积公式改写为如下形式：</p>
-<p>$g_{\theta’} \bigotimes x \approx {\theta_0’}x + {\theta_1’}(L-I_N)x = {\theta_0’}x - {\theta_1 ‘}D^{-1/2}AD^{-1/2}x$</p>
-<p>其中参数$\theta_0’$和$\theta_1’$为滤波器的参数，将在整个图的卷积过程中被共享。连续地应用这种形式的滤波器可以有效地卷积图中节点的$k$阶邻域，其中$k$是神经网络模型中连续滤波操作的次数或卷积层的个数。<br>在实际操作时，可以进一步限制参数的数量，在防止过拟合的同时减少每层的计算量。参数限制后的函数表示如下：</p>
-<p>$g_{\theta’} \bigotimes x \approx \theta_0(I_N + D^{-1/2}AD^{-1/2})x$</p>
-<p>其中，$\theta = \theta_0 ‘ = - \theta_1 ‘$。 注意到$I_N + D^{-1/2}AD^{-1/2}$特征值的范围是[0, 2]，重复进行卷积操作可能会导致数值不稳定以及梯度消失/爆炸等问题，为了解决这一问题，可以采用重整化方法：$I_N + D^{-1/2}AD^{-1/2} \rightarrow \hat D^{-1/2}\hat A \hat D^{-1/2}$ ，其中$\hat A = A + I_N$，$\hat D_{ii} = \sum_j \hat A_{ij}$。 将这个定义概括为一个信号表示：$X \in \mathbb R^{N \times C}$($C$为每个节点的特征维度)，过滤器(特征映射)$F$表示如下：</p>
-<p>$Z = \hat D^{-1/2}\hat A \hat D^{-1/2}X \Theta$</p>
-<p>其中$\Theta \in \mathbb R^{C \times F}$为滤波器参数矩阵，$Z \in \mathbb R^{N \times F}$为信号卷积矩阵。</p>
+<script type="math/tex; mode=display">
+g_{\theta'} \bigotimes x \approx {\theta_0'}x + {\theta_1'}(L-I_N)x = {\theta_0'}x - {\theta_1 '}D^{-1/2}AD^{-1/2}x</script><p>其中参数$\theta_0’$和$\theta_1’$为滤波器的参数，将在整个图的卷积过程中被共享。连续地应用这种形式的滤波器可以有效地卷积图中节点的$k$阶邻域，其中$k$是神经网络模型中连续滤波操作的次数或卷积层的个数。<br>在实际操作时，可以进一步限制参数的数量，在防止过拟合的同时减少每层的计算量。参数限制后的函数表示如下：</p>
+<script type="math/tex; mode=display">
+g_{\theta'} \bigotimes x \approx \theta_0(I_N + D^{-1/2}AD^{-1/2})x</script><p>其中，$\theta = \theta_0 ‘ = - \theta_1 ‘$。 注意到$I_N + D^{-1/2}AD^{-1/2}$特征值的范围是[0, 2]，重复进行卷积操作可能会导致数值不稳定以及梯度消失/爆炸等问题，为了解决这一问题，可以采用重整化方法：$I_N + D^{-1/2}AD^{-1/2} \rightarrow \hat D^{-1/2}\hat A \hat D^{-1/2}$ ，其中$\hat A = A + I_N$，$\hat D_{ii} = \sum_j \hat A_{ij}$。 将这个定义概括为一个信号表示：$X \in \mathbb R^{N \times C}$($C$为每个节点的特征维度)，过滤器(特征映射)$F$表示如下：</p>
+<script type="math/tex; mode=display">
+Z = \hat D^{-1/2}\hat A \hat D^{-1/2}X \Theta</script><p>其中$\Theta \in \mathbb R^{C \times F}$为滤波器参数矩阵，$Z \in \mathbb R^{N \times F}$为信号卷积矩阵。</p>
 <h2 id="4-图卷积模型用于节点分类任务"><a href="#4-图卷积模型用于节点分类任务" class="headerlink" title="4. 图卷积模型用于节点分类任务"></a>4. 图卷积模型用于节点分类任务</h2><p>上一章我们介绍了图上的信息传播模型$f(X,A)$，这一章将利用模型去完成节点分类任务。以往的模型在做这类问题时，通常会通过基于图的显示正则化将标签信息在图上做平滑，例如对损失函数添加图拉普拉斯正则项：</p>
-<script type="math/tex; mode=display">\mathcal L = \mathcal L_0 + \lambda \mathcal L_{reg}</script><script type="math/tex; mode=display">with \mathcal \space \space L_{reg}=\sum_{i,j}A_{ij}||f(X_i)-f(X_j)||^2 = f(X)^{\tau} \Delta f(X)</script><p>其中，$\mathcal L_0$表示图中标签样本的监督损失(<code>supervised loss</code>)，$\lambda$为权重因子，$X$为节点特征矩阵，$\Delta = D-A$表示无向图的未正则拉普拉斯矩阵。显然，这种损失函数的定义依赖于潜在的假设：<code>图中相互连接的节点可能共享相同的标签</code>。然而这种假设可能会限制模型的能力，尤其是当图中的边不一定编码了节点的相似性，而是携带了附加信息。例如citation network中的引用链接或知识图谱中的关系等。<br>基于这一考虑，论文构造模型时将节点特征矩阵$X$和描述底层图结构的邻接矩阵$A$作为独立的输入，进而调整模型。</p>
+<script type="math/tex; mode=display">
+\mathcal L = \mathcal L_0 + \lambda \mathcal L_{reg} \\
+with \mathcal \space \space L_{reg}=\sum_{i,j}A_{ij}||f(X_i)-f(X_j)||^2 = f(X)^{\tau} \Delta f(X)</script><p>其中，$\mathcal L_0$表示图中标签样本的监督损失(<code>supervised loss</code>)，$\lambda$为权重因子，$X$为节点特征矩阵，$\Delta = D-A$表示无向图的未正则拉普拉斯矩阵。显然，这种损失函数的定义依赖于潜在的假设：<code>图中相互连接的节点可能共享相同的标签</code>。然而这种假设可能会限制模型的能力，尤其是当图中的边不一定编码了节点的相似性，而是携带了附加信息。例如citation network中的引用链接或知识图谱中的关系等。<br>基于这一考虑，论文构造模型时将节点特征矩阵$X$和描述底层图结构的邻接矩阵$A$作为独立的输入，进而调整模型。</p>
 <h3 id="4-1-简单模型"><a href="#4-1-简单模型" class="headerlink" title="4.1 简单模型"></a>4.1 简单模型</h3><p>为了方便描述，这里介绍用于节点分类的两层GCN模型。首先，进行预处理操作计算$\hat A = \hat D^{-1/2}\hat A \hat D^{-1/2}$，则前馈模型可以简化描述为：</p>
-<script type="math/tex; mode=display">Z = f(X, A) = softmax(\hat A\space \mathrm {ReLU}(\hat AXW^{0})W^{(1)})</script><p>其中，$W^{(0)}\in \mathbb R^{C\times H}$为<code>input-to-hidden</code>权重矩阵，$H$为特征映射维度，$W^{(0)}\in \mathbb R^{C\times H}$为<code>hidden-to-output</code>权重矩阵。损失函数定义为：</p>
-<script type="math/tex; mode=display">\mathcal L = -\sum_{l \in \mathcal Y_L} \sum_{f=1}^F Y_{lf}lnZ_{lf}</script><p>其中$\mathcal Y_L$为有标签的节点索引。</p>
+<script type="math/tex; mode=display">
+Z = f(X, A) = softmax(\hat A\space \mathrm {ReLU}(\hat AXW^{0})W^{(1)})</script><p>其中，$W^{(0)}\in \mathbb R^{C\times H}$为<code>input-to-hidden</code>权重矩阵，$H$为特征映射维度，$W^{(0)}\in \mathbb R^{C\times H}$为<code>hidden-to-output</code>权重矩阵。损失函数定义为：</p>
+<script type="math/tex; mode=display">
+\mathcal L = -\sum_{l \in \mathcal Y_L} \sum_{f=1}^F Y_{lf}lnZ_{lf}</script><p>其中$\mathcal Y_L​$为有标签的节点索引。</p>
 <h3 id="4-2-实验"><a href="#4-2-实验" class="headerlink" title="4.2 实验"></a>4.2 实验</h3><h4 id="4-2-1-数据集与参数设定"><a href="#4-2-1-数据集与参数设定" class="headerlink" title="4.2.1 数据集与参数设定"></a>4.2.1 数据集与参数设定</h4><p><img src="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/s3MXfNyblmrjeCtqap32XD.Z3P9XusEALi9yLsvoIWk!/r/dL4AAAAAAAAA&amp;ynotemdtimestamp=1545279693625" alt="image">对于<code>Citation networks</code>，每个节点(文档)都有一个类别标签，在训练阶段作者对于每一类取了20个标签，但用到了所有的特征向量。 对于从知识图谱中抽取的数据集<code>NELL</code>，每个节点有61,278维的稀疏特征向量。对于此数据的分类任务，作者每个类仅取了1个标签。<br>测试集设置为一组1,000个标记样本。<br>对于超参数优化，作者设定<code>training iterations</code>为<code>200 epochs</code>，使用Adam优化器进行优化，学习率为0.01，<code>early stopping</code>窗口为10(连续10次<code>epochs</code>校验损失都没有减小则停止训练)</p>
 <h4 id="4-2-2-代码解读"><a href="#4-2-2-代码解读" class="headerlink" title="4.2.2 代码解读"></a>4.2.2 代码解读</h4><p>见<a href="https://github.com/tools-only/Adversarial-attacks-on-GCNs/blob/master/gcn_base.ipynb" target="_blank" rel="noopener"><code>github</code></a></p>
 <h4 id="4-2-3-模型评估"><a href="#4-2-3-模型评估" class="headerlink" title="4.2.3 模型评估"></a>4.2.3 模型评估</h4><p>与<code>baseline</code>的比较结果如下所示：   </p>
@@ -259,15 +280,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&text="><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&is_video=false&description="><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title="><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&name=&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&text=Semi-GCN详解"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&is_video=false&description=Semi-GCN详解"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Semi-GCN详解&body=Check out this article: https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&title=Semi-GCN详解"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tools-only.github.io/2019/03/20/图卷积(Graph Convolutional Networks)详解/&name=Semi-GCN详解&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -306,6 +327,22 @@
   </div>
 </footer>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
 <!-- styles -->
