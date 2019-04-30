@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="知识仓库的构建-知识抽取1  前言​    知识抽取是知识图谱构建的第一步，其中的关键问题是如何从半结构化或非结构化的数据中提取出候选知识单元。知识抽取是一种自动化地从半结构或无结构数据中抽取实体、关系以及属性等结构化信息的技术。设计的关键技术包括：实体抽取、关系抽取和属性抽取[1]。 2  命名实体识别​    命名实体识别（NER）（也称为实体识别、实体分块和实体提取）是信息提取的一个子任务，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ML is awesome">
+<meta property="og:url" content="https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/index.html">
+<meta property="og:site_name" content="ML is awesome">
+<meta property="og:description" content="知识仓库的构建-知识抽取1  前言​    知识抽取是知识图谱构建的第一步，其中的关键问题是如何从半结构化或非结构化的数据中提取出候选知识单元。知识抽取是一种自动化地从半结构或无结构数据中抽取实体、关系以及属性等结构化信息的技术。设计的关键技术包括：实体抽取、关系抽取和属性抽取[1]。 2  命名实体识别​    命名实体识别（NER）（也称为实体识别、实体分块和实体提取）是信息提取的一个子任务，">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://images.shuang0420.com/images/NLP%20%E7%AC%94%E8%AE%B0%20-Information%20Extraction/2.jpg">
+<meta property="og:image" content="https://image.jiqizhixin.com/uploads/editor/2081f585-7937-4d76-82de-6f71feca93bb/1535688372832.png">
+<meta property="og:image" content="c:/Users/ygsqd/AppData/Roaming/Typora/typora-user-images/1556590154545.png">
+<meta property="og:image" content="https://createmomo.github.io/2017/09/12/CRF_Layer_on_the_Top_of_BiLSTM_1/CRF-LAYER-1-v2.png">
+<meta property="og:image" content="http://images.shuang0420.com/images/NLP%E7%AC%94%E8%AE%B0%20-%20Relation%20Extraction/5.jpg">
+<meta property="og:image" content="c:/Users/ygsqd/AppData/Roaming/Typora/typora-user-images/1556598051857.png">
+<meta property="og:image" content="http://images.shuang0420.com/images/%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96-%E5%AE%9E%E4%BD%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/joint_model.png">
+<meta property="og:image" content="https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/b8da823ad81e3b8e5b80d82f86129fdb1d9132e7/3-Figure2-1.png">
+<meta property="og:image" content="c:/Users/ygsqd/AppData/Roaming/Typora/typora-user-images/1556614773147.png">
+<meta property="og:updated_time" content="2019-04-30T09:57:29.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ML is awesome">
+<meta name="twitter:description" content="知识仓库的构建-知识抽取1  前言​    知识抽取是知识图谱构建的第一步，其中的关键问题是如何从半结构化或非结构化的数据中提取出候选知识单元。知识抽取是一种自动化地从半结构或无结构数据中抽取实体、关系以及属性等结构化信息的技术。设计的关键技术包括：实体抽取、关系抽取和属性抽取[1]。 2  命名实体识别​    命名实体识别（NER）（也称为实体识别、实体分块和实体提取）是信息提取的一个子任务，">
+<meta name="twitter:image" content="http://images.shuang0420.com/images/NLP%20%E7%AC%94%E8%AE%B0%20-Information%20Extraction/2.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>ML is awesome</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/posts/">Writing</a></li>
+         
+          <li><a href="https://github.com/tools-only">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/04/22/知识图谱的构建和管理/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&text="><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&is_video=false&description="><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&name=&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#知识仓库的构建-知识抽取"><span class="toc-number">1.</span> <span class="toc-text">知识仓库的构建-知识抽取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前言"><span class="toc-number">1.1.</span> <span class="toc-text">1  前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-命名实体识别"><span class="toc-number">1.2.</span> <span class="toc-text">2  命名实体识别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-研究进展"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1  研究进展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-最新研究"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2  最新研究</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-关系抽取"><span class="toc-number">1.3.</span> <span class="toc-text">3  关系抽取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-研究进展"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1  研究进展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-最新研究"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2  最新研究</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-监督学习中的深度学习方法"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1  监督学习中的深度学习方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-半监督学习"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.2  半监督学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-属性抽取"><span class="toc-number">1.4.</span> <span class="toc-text">4  属性抽取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-研究进展"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1  研究进展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-最新研究"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2  最新研究</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引用"><span class="toc-number">2.</span> <span class="toc-text">引用</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ML is awesome</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2019-04-30T09:57:33.050Z" itemprop="datePublished">2019-04-30</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="知识仓库的构建-知识抽取"><a href="#知识仓库的构建-知识抽取" class="headerlink" title="知识仓库的构建-知识抽取"></a>知识仓库的构建-知识抽取</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1  前言"></a>1  前言</h2><p>​    知识抽取是知识图谱构建的第一步，其中的关键问题是如何从半结构化或非结构化的数据中提取出候选知识单元。知识抽取是一种自动化地从半结构或无结构数据中抽取实体、关系以及属性等结构化信息的技术。设计的关键技术包括：<strong>实体抽取</strong>、<strong>关系抽取</strong>和<strong>属性抽取</strong><sup>[1]</sup>。</p>
+<h2 id="2-命名实体识别"><a href="#2-命名实体识别" class="headerlink" title="2  命名实体识别"></a>2  命名实体识别</h2><p>​    命名实体识别（NER）（也称为实体识别、实体分块和实体提取）是信息提取的一个子任务，旨在将文本中的命名实体定位并分类为预先定义的类别，如人员、组织、位置、时间表达式、数量、货币值、百分比等。命名实体识别任务包括了两部分：找出命名实体，并进行实体分类<sup>[2]</sup>。                <img src="http://images.shuang0420.com/images/NLP%20%E7%AC%94%E8%AE%B0%20-Information%20Extraction/2.jpg" alt="img">                                </p>
+<center><font size="1.5">图1  命名实体识别实例</font></center> 
+
+<h3 id="2-1-研究进展"><a href="#2-1-研究进展" class="headerlink" title="2.1  研究进展"></a>2.1  研究进展</h3><p>​    NER一直是NLP领域中的研究热点，从早期基于词典和规则的方法，到传统机器学习的方法，再到近年来基于深度学习的方法。其研究进展的大致趋势如下图所示。</p>
+<p><img src="https://image.jiqizhixin.com/uploads/editor/2081f585-7937-4d76-82de-6f71feca93bb/1535688372832.png" alt="img"></p>
+<center><font size="1.5">图2  NER研究进展</font></center>
+
+<p>​    在基于机器学习的方法中，NER被当做序列标注问题。利用大规模语料来学习出标注模型，从而对句子的各个位置进行标注。这类方法的基本流程如下：</p>
+<p>​    在训练阶段：</p>
+<pre><code> 1. 收集代表性的训练文档
+ 2. 为每个token标记命名实体
+ 3. 设计适合该文本和类别的特征提取方法
+ 4. 训练序列分类器来预测数据的标签（label）
+</code></pre><p>​        在测试阶段：</p>
+<ol>
+<li>收集代表性的训练文档</li>
+<li>运行分类模型，给每个token做标记</li>
+<li>输出命名实体</li>
+</ol>
+<h3 id="2-2-最新研究"><a href="#2-2-最新研究" class="headerlink" title="2.2  最新研究"></a>2.2  最新研究</h3><p>​    近年来，随着词嵌入（word embedding）的提出，神经网络在NLP领域的应用越来越广泛。这类方法对于序列标注任务的处理方式是：将token从离散one-hot表示映射到低维空间中成为稠密的嵌入，随后将句子的嵌入输入到神经网络中，利用神经网络自动提取特征，并预测每个token的标签。                                                                        <img src="C:\Users\ygsqd\AppData\Roaming\Typora\typora-user-images\1556590154545.png" alt="1556590154545">    </p>
+<pre><code>                                                                                                        &lt;center&gt;&lt;font size=1.5&gt;图3  文本处理中的CNN模型&lt;/font&gt;&lt;/center&gt;
+</code></pre><p>​    这种端到端的训练过程不依赖与特征工程，是一种数据驱动的方法。但缺点是网络模型种类繁多、对参数设置依赖大，且模型可解释性差。此外，这种方法对每个token进行标记的过程是独立进行的，不能利用上文已经预测的标签，只能靠隐状态传递上文信息。</p>
+<p>​    最近，学界提出了BiLSTM模型<sup>[3]</sup>，利用长短期记忆模型（LSTM）来学习句子中每个语言单元（如单词）的最佳上下文向量表示，然后将其作为输入送进条件随机场（CRFs）。其中，条件随机场是NER目前的主流模型，其优点在于在为一个位置进行标注的过程中可以利用丰富的内部及上下文特征信息。这种模型结构能够有效的提升NER的效果。此外，随着注意力机制（Attention）在NLP领域各种任务中的成功应用，也有学者在BiLSTM模型的基础上加入注意力机制<sup>[4]</sup>，结果表明在效果上有一定的提升。</p>
+<p><img src="https://createmomo.github.io/2017/09/12/CRF_Layer_on_the_Top_of_BiLSTM_1/CRF-LAYER-1-v2.png" alt="Figure 1.1: BiLSTM-CRF model"></p>
+<pre><code>                                                                        &lt;center&gt;&lt;font size=1.5&gt;图4  BiLSTM模型&lt;/font&gt;&lt;/center&gt;                
+</code></pre><h2 id="3-关系抽取"><a href="#3-关系抽取" class="headerlink" title="3  关系抽取"></a>3  关系抽取</h2><p>​    文本语料经过实体抽取，得到的是一系列离散的命名实体，为了得到语义信息，还需要从相关语料中提取出实体之间的关联关系，通过关系将实体联系起来，才能构成网状的知识结构。</p>
+<h3 id="3-1-研究进展"><a href="#3-1-研究进展" class="headerlink" title="3.1  研究进展"></a>3.1  研究进展</h3><p>​    关系抽取任务的主要方法有：</p>
+<ul>
+<li><p><strong>基于模式的方法</strong></p>
+<ul>
+<li>基于触发词/字符串</li>
+<li>基于依存句法</li>
+</ul>
+</li>
+<li><p><strong>监督学习方法</strong></p>
+<ul>
+<li>机器学习方法</li>
+<li>深度学习方法</li>
+</ul>
+</li>
+<li><p><strong>半监督/无监督学习方法</strong></p>
+<ul>
+<li>自助法（Bootstrapping）</li>
+<li>远程监督（Distant supervision）</li>
+<li>开放域无监督（Unsupervised learning from the web）</li>
+</ul>
+<p>以基于触发词的方法为例，其主要思想是判断字符串的模式，并写出相应的规则，然后利用特定实体之间的NER标签来帮助关系抽取。</p>
+<p><img src="http://images.shuang0420.com/images/NLP%E7%AC%94%E8%AE%B0%20-%20Relation%20Extraction/5.jpg" alt="5.jpg"></p>
+<pre><code>                                                                                            &lt;center&gt;&lt;font size=1.5&gt;图5  基于触发词的关系抽取实例&lt;/font&gt;&gt;&lt;/center&gt;
+</code></pre><p>传统机器学习方法的标准流程是：</p>
+<ol>
+<li>预先定义待提取的关系集合</li>
+<li>选择相关的命名实体集合</li>
+<li>寻找并标注数据</li>
+<li>选择有代表性的语料库</li>
+<li>标记命名实体</li>
+<li>人工标注实体间的关系</li>
+<li>数据集划分</li>
+<li>特征工程</li>
+<li>训练分类器</li>
+<li>评估结果</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-2-最新研究"><a href="#3-2-最新研究" class="headerlink" title="3.2  最新研究"></a>3.2  最新研究</h3><h4 id="3-2-1-监督学习中的深度学习方法"><a href="#3-2-1-监督学习中的深度学习方法" class="headerlink" title="3.2.1  监督学习中的深度学习方法"></a>3.2.1  监督学习中的深度学习方法</h4><p>​    关系抽取中的深度学习方法又分为两大类，<strong>Pipline</strong>和<strong>Joint model</strong>。</p>
+<ul>
+<li><p><strong>Pipeline</strong></p>
+<p>把实体识别和关系分类作为两个独立的过程，不相互影响，关系的识别依赖于实体识别的效果</p>
+</li>
+<li><p><strong>Joint Model</strong></p>
+<p>实体识别和关系分类的过程共同优化</p>
+<p>其中，深度学习用到的特征（输入）通常有：位置嵌入（Position Embeddings）、词嵌入（Word Embeddings）和知识嵌入（Knowledge Embeddings）</p>
+</li>
+</ul>
+<p>​        <strong>Pipeline</strong>代表性的模型有多层注意力卷积神经网络<sup>[5]</sup>，该模型输入为词嵌入和位置嵌入，通过卷积和Attention来提取特征；以及Att-BLSTM模型<sup>[6]</sup>，利用BiLSTM结合Attention机制来进行关系分类任务。</p>
+<p>​                                                    <img src="C:\Users\ygsqd\AppData\Roaming\Typora\typora-user-images\1556598051857.png" alt="1556598051857"></p>
+<pre><code>                                                                                                    &lt;center&gt;&lt;font size=1.5&gt;图6  Att-BLSMT模型结构&lt;/font&gt;&lt;/center&gt;
+</code></pre><p>​    <strong>Pipeline</strong>的方法会导致误差的传递，端到端的方法直觉上会更优。<strong>Joint Model</strong>即采用端到端的方式进行抽取，代表性方法有LSTM-RNNs<sup>[7]</sup> 。模型用到了三个表示层，分别是嵌入层（Embedding layer），负责实体识别的序列层（Sequence layer）以及负责关系分类的依赖层（Dependency layer）。</p>
+<p><img src="http://images.shuang0420.com/images/%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96-%E5%AE%9E%E4%BD%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/joint_model.png" alt="joint_model.png"></p>
+<pre><code>                                                                                                        &lt;center&gt;&lt;font size=1.5&gt;图7  LSTM-RNNs模型结构&lt;/font&gt;&lt;/center&gt;
+</code></pre><h4 id="3-2-2-半监督学习"><a href="#3-2-2-半监督学习" class="headerlink" title="3.2.2  半监督学习"></a>3.2.2  半监督学习</h4><p>​    监督学习适用于测试集和训练集属于相同或相似分布的情况，然而，这类方法在实际应用中泛化能力不足，难以扩展新的关系。半监督学习利用少量的有标注信息进行学习，这类工作主要基于<strong>自助法（Bootstrapping）</strong>以及<strong>远程监督（Distance Supervision）</strong>方法。<strong>自助法</strong>利用少量实例作为种子集合，然后从非结构化数据中提取模式和实例，然后从新的实例中学习新的模式并以此寻找新的三元组。这种方法的优点是无需大量标注数据，并且能够发现新的实例。但是模型效果对初始种子集合比较敏感，结果准确率较低（注：在属性抽取任务的工作中，有研究者提出通过度量模式和三元组的可靠度来提高模型准确率<sup>[8]</sup>）。<strong>远程监督</strong>的基本假设是：如果两个实体在知识库中具有某种关系，那么包含这两个实体的非结构化语句都能表示出这种关系。其具体执行过程为：</p>
+<ol>
+<li>从知识库中抽取存在关系的实体对</li>
+<li>从非结构化文本中抽取包含实体对的语句作为训练集，训练分类器</li>
+</ol>
+<p>​         这种方法并没有采用大量标注数据，泛化能力较好，同时又结合了监督学习的长处，通过已有知识对模型训练进行监督。代表工作如结合Attention的PCNN模型<sup>[9]</sup>，其中PCNN利用分段池化来刻画不同上下文对语句向量的贡献，Sentence-level Attention对bag中的所有句子进行加权作为特征向量，保留尽可能多的信息，能够动态减少噪声语句的权重，有利于解决错误标记的问题。但是这种方法假设较强，且难以发现新的关系。</p>
+<p>​                                                    <img src="https://ai2-s2-public.s3.amazonaws.com/figures/2017-08-08/b8da823ad81e3b8e5b80d82f86129fdb1d9132e7/3-Figure2-1.png" alt="Figure 2: The architecture of APCNNs model. It has two parts: (a) PCNNs Module and (b) Sentence-level Attention Module. The PCNNs Module is used to extract features from an instance in a bag. The Sentence-level Attention Module computes the weighted average vector (bag features) of all instances in a bag through an attention layer, and then feed the bag features into a softmax classifier. b1, b2, Â· Â· Â· , bq are instance vectors in a bag and they are extracted by the PCNNs. e1 and e2 are the first and second entities, respectively. vrelation denotes the difference vector of e1 and e2.">            </p>
+<pre><code>                                                                                                        &lt;center&gt;&lt;font size=1.5&gt;图8  Att-PCNN模型结构&lt;/font&gt;&lt;/center&gt;
+</code></pre><h2 id="4-属性抽取"><a href="#4-属性抽取" class="headerlink" title="4  属性抽取"></a>4  属性抽取</h2><p>​    属性抽取是指从不同信息源中采集特定实体的属性信息，属性抽取作为知识抽取的一部分，其目标主要是从不同信息源中采集特定实体的属性信息。例如针对某个公众人物，可以从网络公开信息中得到其昵称、生日、国籍、教育背景等信息，从而实现对实体属性的勾画。百科类网站提供的半结构化数据是实体属性抽取研究的主要数据来源，然而还有大量的实体属性数据隐藏在非结构化的数据中，如何从海量非结构化数据中抽取实体属性是值得关注的研究问题。</p>
+<h3 id="4-1-研究进展"><a href="#4-1-研究进展" class="headerlink" title="4.1  研究进展"></a>4.1  研究进展</h3><p>​    从非结构化的数据中抽取实体属性的一种方法是基于百科类网站的半结构化数据，通过自动抽取生成训练语料，用于训练实体属性标注模型，然后利用模型实现对非结构化数据实体属性的抽取；另一种方案是采用数据挖掘的方法直接从文本中挖掘实体属性与属性值之间的关系模式。根据学习的方式不同，可以将属性抽取方法分为两类：<strong>监督学习方法</strong>和<strong>半监督/无监督学习方法</strong>。</p>
+<p>​    监督学习方法将属性抽取认为视为一个分类问题，分类的对象是包含关系实际的两个实体的语句。这类方法又可以分为基于特征的方法和基于核函数的方法。监督学习方法需要大量有标注的样本，且泛化能力不足。虽然有学者提出无监督的方法，但是无监督方法得到的结果一般无法映射到实际需要的关系。</p>
+<h3 id="4-2-最新研究"><a href="#4-2-最新研究" class="headerlink" title="4.2  最新研究"></a>4.2  最新研究</h3><p>​    与关系抽取类似，属性抽取任务中也用到了<strong>半监督自助法（Bootstrapping）</strong>和<strong>远程监督方法（Distance Supervision）</strong>。<strong>自助法</strong>是一种增量式的方法，尽管不需要大量有标注的数据，但是常常会出现效果不理想的情况。为了解决这一问题，Qi Li等人<sup>[8]</sup>提出了TruePIE模型，通过度量属性抽取模式和三元组的可靠性，在训练过程中对新提取的模式和属性三元组加以评估，选择可靠的模式和三元组，实现在整个迭代中改善模型的效果。</p>
+<p><img src="C:\Users\ygsqd\AppData\Roaming\Typora\typora-user-images\1556614773147.png" alt="1556614773147"></p>
+<center><font size="1.5">图9  TruePIE Bootstrapping框架</font></center>
+
+<p>​    此外，由于属性抽取任务和关系抽取任务是类似的，因此，在关系抽取任务中表现较好的BiLSTM模型也可以用于属性抽取<sup>[10]</sup>。</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><p>[1] 刘峤, 李杨, 段宏, 等. 知识图谱构建技术综述[J]. 计算机研究与发展, 2016, 53(3): 582-600.</p>
+<p>[2] <a href="http://www.shuang0420.com/2018/09/15/%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96-%E5%AE%9E%E4%BD%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" target="_blank" rel="noopener">http://www.shuang0420.com/2018/09/15/%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96-%E5%AE%9E%E4%BD%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/</a></p>
+<p>[3] Lample, G., Ballesteros, M., Subramanian, S., Kawakami, K. and Dyer, C., 2016. Neural architectures for named entity recognition. arXiv preprint arXiv:1603.01360.</p>
+<p>[4] Luo L, Yang Z, Yang P, et al. An attention-based BiLSTM-CRF approach to document-level chemical named entity recognition[J]. Bioinformatics, 2017, 34(8): 1381-1388.</p>
+<p>[5] Wang L, Cao Z, De Melo G, et al. Relation classification via multi-level attention cnns[J]. 2016.</p>
+<p>[6] Zhou, P., Shi, W., Tian, J., Qi, Z., Li, B., Hao, H., &amp; Xu, B. (2016). Attention-based bidirectional long short-term memory networks for relation classification. In <em>Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 2: Short Papers)</em> (Vol. 2, pp. 207-212).</p>
+<p>[7] Miwa M, Bansal M. End-to-end relation extraction using lstms on sequences and tree structures[J]. arXiv preprint arXiv:1601.00770, 2016.</p>
+<p>[8] Li, Q., Jiang, M., Zhang, X., Qu, M., Hanratty, T. P., Gao, J., &amp; Han, J. (2018, July). Truepie: Discovering reliable patterns in pattern-based information extraction. In <em>Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining</em> (pp. 1675-1684). ACM.</p>
+<p>[9] Ji, G., Liu, K., He, S., &amp; Zhao, J. (2017). Distant Supervision for Relation Extraction with Sentence-Level Attention and Entity Descriptions. <em>AAAI</em>.</p>
+<p>[10] He, Z., Zhou, Z., Gan, L., Huang, J., &amp; Zeng, Y. (2019). Chinese entity attributes extraction based on bidirectional LSTM networks. <em>International Journal of Computational Science and Engineering</em>, <em>18</em>(1), 65-71. </p>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/posts/">Writing</a></li>
+         
+          <li><a href="https://github.com/tools-only">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#知识仓库的构建-知识抽取"><span class="toc-number">1.</span> <span class="toc-text">知识仓库的构建-知识抽取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前言"><span class="toc-number">1.1.</span> <span class="toc-text">1  前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-命名实体识别"><span class="toc-number">1.2.</span> <span class="toc-text">2  命名实体识别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-研究进展"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1  研究进展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-最新研究"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2  最新研究</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-关系抽取"><span class="toc-number">1.3.</span> <span class="toc-text">3  关系抽取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-研究进展"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1  研究进展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-最新研究"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2  最新研究</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-监督学习中的深度学习方法"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1  监督学习中的深度学习方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-半监督学习"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.2  半监督学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-属性抽取"><span class="toc-number">1.4.</span> <span class="toc-text">4  属性抽取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-研究进展"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1  研究进展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-最新研究"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2  最新研究</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#引用"><span class="toc-number">2.</span> <span class="toc-text">引用</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&text="><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&is_video=false&description="><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&title="><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://tools-only.github.io/2019/04/30/知识仓库的构建-知识抽取/&name=&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Zhou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/posts/">Writing</a></li>
+         
+          <li><a href="https://github.com/tools-only">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-37473492-6', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
