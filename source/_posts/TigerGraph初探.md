@@ -56,21 +56,14 @@ Dan,Kevin,2015-12-30
 
 #### 2.3.1  启动TigerGraph与GSQL
 
-启动TigerGraph    
+启动TigerGraph      
 
-> ```shell
-> > gadmin start all
-> ```
->
-> 启动GSQL    
->
-> > ```shell
-> > > gsql
-> > ```
-> >
-> > 可以在GSQL的命令行使用`ls`命令查看数据库。由于是第一次使用，所以显示为空：    
-> >
-> > ![1558950715646](<http://a1.qpic.cn/psb?/V14RoQOQ2suUoC/K2kvAhY4FBIBckp7cLOb68wJ84Ul5c0Xm*sqsm5E20E!/b/dAgBAAAAAAAA&ek=1&kp=1&pt=0&bo=rgG8AK4BvAADGTw!&tl=1&vuin=595819371&tm=1558958400&sce=60-4-3&rf=viewer_4>)
+```shell
+gadmin start all
+gsql
+```
+可以在GSQL的命令行中使用`ls`命令查看数据库，由于是第一次使用，所以显示为空   
+![1558950715646](http://a1.qpic.cn/psb?/V14RoQOQ2suUoC/K2kvAhY4FBIBckp7cLOb68wJ84Ul5c0Xm*sqsm5E20E!/b/dAgBAAAAAAAA&ek=1&kp=1&pt=0&bo=rgG8AK4BvAADGTw!&tl=1&vuin=595819371&tm=1558958400&sce=60-4-3&rf=viewer_4)
 
 需要清空数据库的话，使用`drop all`命令并使用命令`gadmin restart -fy`重启TigerGraph服务即可。  
 
@@ -110,7 +103,7 @@ Dan,Kevin,2015-12-30
 
 #### 2.3.3  载入数据
 
- 	将上述`person.csv`和`friendship.csv`存储到文件中，路径为`"/home/tigergraph/filename"`，执行以下代码载入数据到图中。
+将上述`person.csv`和`friendship.csv`存储到文件中，路径为`"/home/tigergraph/filename"`，执行以下代码载入数据到图中。  
 
 ```shell
 USE GRAPH social # 指定要载入数据的图
@@ -126,7 +119,7 @@ END
 
 ![1558955106233](<http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/i5VVI1qNWMBO6zYrAcCjqdPetsjv.e2.deKM4DuuKqs!/r/dDUBAAAAAAAA>)
 
-​	创建好加载作业后，开始运行任务。命令行执行：  
+创建好加载作业后，开始运行任务。命令行执行：  
 
 ```shell
 RUN LOADING JOB load_social
@@ -317,3 +310,4 @@ gsql hello2.gsql
 
 ![1558959103232](<http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/WPUrqaimOsb.oIJzrUut3CVZ.dlQOE.ejtMEkdAZAlc!/r/dFYBAAAAAAAA>)
 
+后面将在TigerGraph上进行更多的尝试。  
