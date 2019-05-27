@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/vG9sB433bFybYplUF3Dx84zeqEwDQG5YWVpLkPDyCdI!/r/dFMBAAAAAAAA">
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/.gntkjUESUhIOcxIl5XLSoVAyk8mb7nFqAKss9TWcgw!/r/dL4AAAAAAAAA">
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V14RoQOQ2suUoC/WPUrqaimOsb.oIJzrUut3CVZ.dlQOE.ejtMEkdAZAlc!/r/dFYBAAAAAAAA">
-<meta property="og:updated_time" content="2019-05-27T13:01:39.746Z">
+<meta property="og:updated_time" content="2019-05-27T13:09:35.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TigerGraph图数据库初探">
 <meta name="twitter:description" content="TigerGraph Demo 1  安装TigerGraph​    官方网址，选择Developer Edition进行注册，下载对应系统环境的程序。 2  Demo演示2.1  图模型​    包括如何创建图模式，向图中加载数据，编写简单的参数化查询以及运行查询。   ​    在TigerGraph数据库中，数据实体被称为节点（vertex），节点之间的关联用边来表示。节点和边都可以具有">
@@ -172,22 +172,9 @@ Nancy,female,20,ky
 Jack,male,26,fl
 </code></pre><p><strong>friendship.csv</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">person1,person2,date</span><br><span class="line">Tom,Dan,2017-06-03</span><br><span class="line">Tom,Jenny,2015-01-01</span><br><span class="line">Dan,Jenny,2016-08-03</span><br><span class="line">Jenny,Amily,2015-06-08</span><br><span class="line">Dan,Nancy,2016-01-03</span><br><span class="line">Nancy,Jack,2017-03-02</span><br><span class="line">Dan,Kevin,2015-12-30</span><br></pre></td></tr></table></figure>
-<h3 id="2-3-数据导入"><a href="#2-3-数据导入" class="headerlink" title="2.3  数据导入"></a>2.3  数据导入</h3><h4 id="2-3-1-启动TigerGraph与GSQL"><a href="#2-3-1-启动TigerGraph与GSQL" class="headerlink" title="2.3.1  启动TigerGraph与GSQL"></a>2.3.1  启动TigerGraph与GSQL</h4><p>启动TigerGraph    </p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> gadmin start all</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>启动GSQL    </p>
-<blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> &gt; gsql</span><br><span class="line"><span class="meta">&gt;</span> &gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>可以在GSQL的命令行使用<code>ls</code>命令查看数据库。由于是第一次使用，所以显示为空：    </p>
-<p><img src="http://a1.qpic.cn/psb?/V14RoQOQ2suUoC/K2kvAhY4FBIBckp7cLOb68wJ84Ul5c0Xm*sqsm5E20E!/b/dAgBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=rgG8AK4BvAADGTw!&amp;tl=1&amp;vuin=595819371&amp;tm=1558958400&amp;sce=60-4-3&amp;rf=viewer_4" alt="1558950715646"></p>
-</blockquote>
-</blockquote>
+<h3 id="2-3-数据导入"><a href="#2-3-数据导入" class="headerlink" title="2.3  数据导入"></a>2.3  数据导入</h3><h4 id="2-3-1-启动TigerGraph与GSQL"><a href="#2-3-1-启动TigerGraph与GSQL" class="headerlink" title="2.3.1  启动TigerGraph与GSQL"></a>2.3.1  启动TigerGraph与GSQL</h4><p>启动TigerGraph      </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gadmin start all</span><br><span class="line">gsql</span><br></pre></td></tr></table></figure>
+<p>可以在GSQL的命令行中使用<code>ls</code>命令查看数据库，由于是第一次使用，所以显示为空<br><img src="http://a1.qpic.cn/psb?/V14RoQOQ2suUoC/K2kvAhY4FBIBckp7cLOb68wJ84Ul5c0Xm*sqsm5E20E!/b/dAgBAAAAAAAA&amp;ek=1&amp;kp=1&amp;pt=0&amp;bo=rgG8AK4BvAADGTw!&amp;tl=1&amp;vuin=595819371&amp;tm=1558958400&amp;sce=60-4-3&amp;rf=viewer_4" alt="1558950715646"></p>
 <p>需要清空数据库的话，使用<code>drop all</code>命令并使用命令<code>gadmin restart -fy</code>重启TigerGraph服务即可。  </p>
 <h4 id="2-3-2-定义图模式"><a href="#2-3-2-定义图模式" class="headerlink" title="2.3.2  定义图模式"></a>2.3.2  定义图模式</h4><p>创建GSQL图的第一步是定义其架构，GSQL提供了类似SQL DLL的数据定义语言，用于建模节点类型、边类型和图。  </p>
 <ol>
@@ -352,6 +339,21 @@ Jack,male,26,fl
   </div>
 </footer>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
 <!-- styles -->
