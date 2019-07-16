@@ -63,22 +63,21 @@ date: 2019-05-06 21:13:54
 - 2018.05            **&emsp;** **&emsp;** 参加天津第二届智能大会多智能体系统与深度强化学习论坛
 - 2018.05            **&emsp;** **&emsp;** 参加南京大学网络合作与安全研究中心电子商务反欺诈交流会
 
-##### 学术论文
+##### 学术论文  
 
----
+------
 
- 	研究兴趣包括但不限于机器学习，对抗学习，复杂网络，网络安全。目前研究专注于**图卷积网络**与实际应用场景的结合，以及其中可能存在的安全性问题。
+研究兴趣包括但不限于机器学习，对抗学习，复杂网络，网络安全。目前研究专注于**图卷积网络**与实际应用场景的结合，以及其中可能存在的安全性问题。
 
- 	[1] Yizhi Ren,  **Qi Zhou**, Zhen Wang*, Ting Wu, Guohua Wu, Kim-Kwang Raymond Choo. Query-efficient Label-only Attacks Against Black-box Machine Learning Models. Computer & Security（SCI二区期刊，一稿修改）.  
-
-​	[2] **Qi Zhou**, Yizhi Ren, Tianyu Xia, Lifeng Yuan and Linqiang Chen. Data Poisoning Attacks on Graph Convolutional Matrix Completion. ICA3PP 2019（CCF C类会议，投稿在审）.  
+1.  Yizhi Ren,  **Qi Zhou**, Zhen Wang*, Ting Wu, Guohua Wu, Kim-Kwang Raymond Choo. Query-efficient Label-only Attacks Against Black-box Machine Learning Models. Computer & Security（SCI二区期刊，一稿修改）.  
+2.  Qi Zhou**, Yizhi Ren, Tianyu Xia, Lifeng Yuan and Linqiang Chen. Data Poisoning Attacks on Graph Convolutional Matrix Completion. ICA3PP 2019（CCF C类会议，投稿在审）.  
 
 ##### 其他
 
----
+------
 
- 	热爱音乐，目前在做AI+音乐的个人项目。
+热爱音乐，目前在做AI+音乐的个人项目。  
 
- 	热爱篮球，本科、研究生阶段均有参与学校和学院组织的篮球赛。
+热爱篮球，本科、研究生阶段均有参与学校和学院组织的篮球赛。
 
 ​	
