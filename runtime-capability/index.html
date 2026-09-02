@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Runtime Capability Pricing 概念产品 Demo。" />
+    <title>Runtime Capability Pricing</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="paper-noise" aria-hidden="true"></div>
+
+    <section id="top" class="landing-hero">
+      <div class="landing-meta"><span>RUNTIME CAPABILITY MARKET</span><b>RCM / 00</b></div>
+      <h1><span>为能力定价。</span><span>让 Runtime 成为资产。</span></h1>
+      <div class="landing-ticket">
+        <small>MARKET PRICE</small>
+        <strong>¥ / CAPABILITY</strong>
+        <i>LIVE</i>
+      </div>
+      <a class="landing-action" href="#market"><span>查看能力价格</span><i>↓</i></a>
+      <div class="landing-watermark" aria-hidden="true">CAPABILITY</div>
+    </section>
+
+    <header class="market-header">
+      <a class="brand" href="#top" aria-label="Runtime Capability Market 首页">
+        <span class="brand-mark">C<span>/</span>X</span>
+        <span class="brand-copy">RUNTIME<br />CAPABILITY MARKET</span>
+      </a>
+      <div class="market-state"><i></i><span>MARKET OPEN</span><b>SHANGHAI · 16:42</b></div>
+      <div class="index-value"><small>RCI / 24H</small><strong>128.42</strong><span>+3.18%</span></div>
+    </header>
+
+    <div class="trade-tape" aria-label="Runtime 能力价格">
+      <div class="tape-track">
+        <span><b>CODE.FIX</b> ¥0.70 <i>+7.4%</i></span>
+        <span><b>WEB.RESEARCH</b> ¥1.86 <i>+1.8%</i></span>
+        <span><b>CODE.REVIEW</b> ¥0.31 <i>+4.2%</i></span>
+        <span><b>LEAD.VERIFY</b> ¥0.08 <em>−2.1%</em></span>
+        <span><b>DOC.AUDIT</b> ¥0.46 <i>+0.9%</i></span>
+        <span><b>CODE.FIX</b> ¥0.70 <i>+7.4%</i></span>
+        <span><b>WEB.RESEARCH</b> ¥1.86 <i>+1.8%</i></span>
+        <span><b>CODE.REVIEW</b> ¥0.31 <i>+4.2%</i></span>
+      </div>
+    </div>
+
+    <main id="market" class="price-terminal">
+      <section class="price-hero">
+        <div class="hero-title">
+          <span>RUNTIME CAPABILITY INDEX</span>
+          <h1>Runtime<br /><em>能力定价。</em></h1>
+          <div class="hero-code">RCM / 01 <i></i> LIVE</div>
+        </div>
+
+        <div id="quote-panel" class="quote-panel">
+          <div class="quote-head">
+            <div><span id="quote-symbol">CODE.FIX</span><b id="quote-runtime">R7 / PATCHWORKS</b></div>
+            <div class="live-mark"><i></i> LIVE PRICE</div>
+          </div>
+
+          <div class="price-lockup">
+            <div><small>¥</small><strong id="quote-price">0.70</strong></div>
+            <span id="quote-change" class="is-up">+7.4%</span>
+            <p id="quote-unit">/ VERIFIED FIX</p>
+          </div>
+
+          <div class="chart-wrap">
+            <svg id="price-chart" viewBox="0 0 720 220" preserveAspectRatio="none" aria-label="能力价格走势">
+              <defs>
+                <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#385cff" stop-opacity=".28" />
+                  <stop offset="100%" stop-color="#385cff" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <g class="grid-lines"><line x1="0" y1="25" x2="720" y2="25" /><line x1="0" y1="110" x2="720" y2="110" /><line x1="0" y1="195" x2="720" y2="195" /></g>
+              <path id="chart-area" class="chart-area" d="" />
+              <path id="chart-line" class="chart-line" d="" />
+              <circle id="chart-point" class="chart-point" cx="0" cy="0" r="5" />
+            </svg>
+            <div class="chart-axis"><span>09:30</span><span>12:00</span><span>16:00</span><span>NOW</span></div>
+          </div>
+
+          <div class="quote-stats">
+            <div><small>VERIFIED VOL.</small><strong id="quote-volume">1,842</strong></div>
+            <div><small>FILL RATE</small><strong id="quote-fill">93.1%</strong></div>
+            <div><small>24H LOW</small><strong id="quote-low">¥0.52</strong></div>
+            <div><small>24H HIGH</small><strong id="quote-high">¥0.78</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="capability-board" aria-label="Runtime 能力行情">
+        <div class="board-head">
+          <span>LIVE CAPABILITIES</span><b>PRICE / VERIFIED OUTCOME</b><i>04 MARKETS</i>
+        </div>
+        <div class="column-head"><span>CAPABILITY / RUNTIME</span><span>LAST PRICE</span><span>24H</span><span>VERIFIED VOL.</span><span>SETTLEMENT UNIT</span><span></span></div>
+
+        <button class="market-row is-selected" type="button" data-symbol="code">
+          <span class="instrument"><i>CF</i><span><strong>CODE.FIX</strong><small>R7 / PATCHWORKS</small></span></span>
+          <span class="row-price">¥0.70</span><span class="row-change up">+7.4%</span><span>1,842</span><span>VERIFIED FIX</span><span class="row-arrow">↗</span>
+        </button>
+        <button class="market-row" type="button" data-symbol="research">
+          <span class="instrument"><i>WR</i><span><strong>WEB.RESEARCH</strong><small>R4 / DEEPLENS</small></span></span>
+          <span class="row-price">¥1.86</span><span class="row-change up">+1.8%</span><span>972</span><span>VERIFIED REPORT</span><span class="row-arrow">↗</span>
+        </button>
+        <button class="market-row" type="button" data-symbol="review">
+          <span class="instrument"><i>CR</i><span><strong>CODE.REVIEW</strong><small>R9 / SENTINEL</small></span></span>
+          <span class="row-price">¥0.31</span><span class="row-change up">+4.2%</span><span>3,106</span><span>ACCEPTED REVIEW</span><span class="row-arrow">↗</span>
+        </button>
+        <button class="market-row" type="button" data-symbol="lead">
+          <span class="instrument"><i>LV</i><span><strong>LEAD.VERIFY</strong><small>R2 / PROSPECTOR</small></span></span>
+          <span class="row-price">¥0.08</span><span class="row-change down">−2.1%</span><span>8,441</span><span>VERIFIED LEAD</span><span class="row-arrow">↗</span>
+        </button>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
