@@ -12,9 +12,11 @@ CV information easy to scan.
 - Header: redacted identity placeholder, role, Hangzhou location, theme toggle.
 - Hero: research focus, short positioning statement, and three CV metrics.
 - Education: four institutions in a compact timeline.
-- Project Experience: Agent Self-Evolution Research and Loom, with section icons.
+- Project Experience: each project is an independent editorial entry with its own
+  timeline, role, focus, and contribution list.
 - Work Experience: operating-system kernel and wearable systems work.
-- Publications & Research: filterable representative publications by area.
+- Publications & Research: each paper is an independent entry; filters narrow the
+  list by research direction without nesting papers into dense grouped blocks.
 - Honors & Service: patents, scholarships, awards, and program committee service.
 
 ## Interaction and accessibility
@@ -31,4 +33,3 @@ CV information easy to scan.
 - Validate HTML structure and JavaScript syntax locally.
 - Check all section anchors and publication filters.
 - Check mobile layout rules and reduced-motion behavior in the stylesheet.
-

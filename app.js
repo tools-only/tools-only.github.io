@@ -16,15 +16,11 @@ themeToggle.addEventListener('click', () => {
 });
 
 const filterButtons = [...document.querySelectorAll('.filter-button')];
-const publicationGroups = [...document.querySelectorAll('.publication-group')];
+const publications = [...document.querySelectorAll('.publications-grid .publication')];
 
 function filterPublications(filter) {
-  publicationGroups.forEach((group) => {
-    const groupMatches = filter === 'all' || group.dataset.group === filter;
-    group.hidden = !groupMatches;
-    group.querySelectorAll('.publication').forEach((publication) => {
-      publication.classList.toggle('is-hidden', !groupMatches);
-    });
+  publications.forEach((publication) => {
+    publication.hidden = filter !== 'all' && publication.dataset.category !== filter;
   });
   filterButtons.forEach((button) => button.classList.toggle('is-active', button.dataset.filter === filter));
 }
