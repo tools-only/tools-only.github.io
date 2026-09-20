@@ -100,16 +100,22 @@
 
     <section id="usage">
       <h2>Model Usage</h2>
-      <p class="section-note">cc-switch usage snapshot · 2026.06.07 – 2026.08.21</p>
-      <div class="usage-grid">
-        <div><strong>4.24B</strong><span>Total tokens</span></div>
-        <div><strong>35,982</strong><span>Requests</span></div>
-        <div><strong>5.35B</strong><span>Input tokens</span></div>
-        <div><strong>22.61M</strong><span>Output tokens</span></div>
-        <div><strong>3.67B</strong><span>Cache read</span></div>
-        <div><strong>$2,599.21</strong><span>Recorded cost</span></div>
+      <p class="section-note">cc-switch usage · <span id="usage-period">2026.06.07 – 2026.08.21</span></p>
+      <div class="usage-controls" role="group" aria-label="Usage date range">
+        <button type="button" data-range="all" class="is-selected">All time</button>
+        <button type="button" data-range="30d">30 days</button>
+        <button type="button" data-range="7d">7 days</button>
+        <button type="button" data-range="today">Today</button>
       </div>
-      <p class="usage-note">Includes input, output, cache read, and cache creation tokens recorded by cc-switch. Cost is the local recorded estimate, not an invoice.</p>
+      <div class="usage-grid" aria-live="polite">
+        <div><strong id="usage-total">4.24B</strong><span>Total tokens</span></div>
+        <div><strong id="usage-requests">35,982</strong><span>Requests</span></div>
+        <div><strong id="usage-input">535.27M</strong><span>Input tokens</span></div>
+        <div><strong id="usage-output">22.61M</strong><span>Output tokens</span></div>
+        <div><strong id="usage-cache">3.67B</strong><span>Cache read</span></div>
+        <div><strong id="usage-cost">$2,599.21</strong><span>Recorded cost</span></div>
+      </div>
+      <p class="usage-note">Includes input, output, cache read, and cache creation tokens recorded by cc-switch. Cost is the local recorded estimate, not an invoice. Last snapshot: 2026.08.21.</p>
     </section>
 
     <section id="service">

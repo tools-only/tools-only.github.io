@@ -46,9 +46,12 @@ li{padding-left:2px;margin-bottom:7px}
 .usage-grid div{padding:18px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
 .usage-grid strong{display:block;font:600 21px/1.3 Arial,sans-serif;color:#20252b}
 .usage-grid span{display:block;margin-top:5px;color:var(--muted);font:13px/1.5 Arial,sans-serif}
+.usage-controls{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.usage-controls button,.usage-controls input{border:1px solid var(--line);background:#fff;color:var(--ink);font:13px Arial,sans-serif;border-radius:4px;padding:8px 10px}
+.usage-controls button{cursor:pointer}.usage-controls button:hover,.usage-controls button.is-selected{border-color:var(--link);color:var(--link)}
 .usage-note{margin-top:12px;color:var(--muted);font:13px/1.6 Arial,sans-serif}
 footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:18px 0 28px;color:var(--muted);font:13px/1.6 Arial,sans-serif}
 .skip-link{position:absolute;top:8px;left:8px;transform:translateY(-160%);padding:6px 10px;background:#fff}
 .skip-link:focus{transform:none}
-@media(max-width:600px){.masthead-inner,.page,footer{width:calc(100% - 36px)}.masthead-inner{align-items:flex-start;flex-direction:column;gap:10px}nav{gap:15px;font-size:13px}.page{padding-top:32px}h1{font-size:29px}h2{font-size:22px}section{margin-bottom:36px}.timeline article{grid-template-columns:1fr;gap:3px}.date span{display:inline}.entry-heading{display:block}.entry-heading .date{margin:0 0 8px}body{font-size:15px}.paper-meta span{display:block}}
+@media(max-width:600px){.masthead-inner,.page,footer{width:calc(100% - 36px)}.masthead-inner{align-items:flex-start;flex-direction:column;gap:10px}nav{gap:15px;font-size:13px}.page{padding-top:32px}h1{font-size:29px}h2{font-size:22px}section{margin-bottom:36px}.timeline article{grid-template-columns:1fr;gap:3px}.date span{display:inline}.entry-heading{display:block}.entry-heading .date{margin:0 0 8px}body{font-size:15px}.paper-meta span{display:block}.usage-grid{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
