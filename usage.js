@@ -3,7 +3,7 @@ async function initializeUsage() {
   try {
     const response = await fetch('./usage-data.json', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Usage unavailable');
-    const { days } = await response.json();
+    const { days, exportedAt, timeZone = 'Asia/Shanghai' } = await response.json();
     if (!days.length) throw new Error('No records');
     const total = day => day.input + day.output + day.cache + day.creation;
     const compact = value => new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 2 }).format(value);
@@ -23,7 +23,7 @@ async function initializeUsage() {
     const calendar = document.querySelector('#usage-calendar');
     const first = days[0].date;
     const last = days.at(-1).date;
-    const snapshotEnd = last;
+    const today = () => new Intl.DateTimeFormat('en-CA', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
     const lookup = new Map(days.map(day => [day.date, day]));
     const peak = Math.max(...days.map(total), 1);
     const start = shift(first, -new Date(first + 'T00:00:00Z').getUTCDay());
@@ -42,10 +42,11 @@ async function initializeUsage() {
     }
     buttons.forEach(button => button.addEventListener('click', () => {
       const range = button.dataset.range;
-      render(range === 'all' ? first : shift(snapshotEnd, range === '30d' ? -29 : range === '7d' ? -6 : 0), range === 'all' ? last : snapshotEnd, range);
+      const snapshotEnd = today();
+      render(range === 'all' ? first : shift(snapshotEnd, range === '30d' ? -29 : range === '7d' ? -6 : 0), snapshotEnd, range);
     }));
-    document.querySelector('#usage-status').textContent = `Historical cc-switch rollups through ${last}. Recent request logs are not included; blank days mean no record. Token components follow stored counters. Cost is an estimate. Daily sync is not enabled.`;
-    render(first, last, 'all');
+    document.querySelector('#usage-status').textContent = `cc-switch history + deduplicated recent requests through ${last}. Dates: ${timeZone}. Updated ${exportedAt}. Input excludes cache; total includes cache once. Blank days mean no record. Cost is an estimate. Daily sync is not enabled.`;
+    render(first, today(), 'all');
   } catch {
     period.textContent = 'Usage data could not be loaded. Please refresh.';
   }
