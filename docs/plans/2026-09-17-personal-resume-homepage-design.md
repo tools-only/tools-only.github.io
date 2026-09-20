@@ -2,23 +2,25 @@
 
 ## Direction
 
-A clean personal website rather than a CV dashboard or publication blog. The
-homepage begins with a direct introduction to the person and research identity,
-then uses a restrained serif/sans system to tell the story through a journey,
-selected projects, and a small collection of papers.
+A clean academic personal website inspired by the information architecture of
+didizhu-judy.github.io. The page uses a compact masthead, profile hero, narrative
+introduction, research map, highlights, and visual project/publication cards.
+The reference informs structure and rhythm; colors, diagrams, and copy remain
+specific to this research profile.
 
 ## Information architecture
 
-- Header: compact personal-site navigation and theme toggle.
-- Introduction: who the researcher is, what they study, and where they are based.
-- Journey: education and industry experience in one readable timeline.
-- Selected Projects: three projects, each with a short purpose and contribution summary.
-- Selected Papers: six papers, each with a short problem/contribution description.
-- Closing note: awards, service, GitHub, and location.
+- Header: compact anchor navigation.
+- Profile hero: visual identity, affiliation, location, research tagline, and links.
+- About Me: short narrative research introduction.
+- Research Map: Evolve, Defend, and Understand.
+- Recent Highlights: four dated updates.
+- Selected Projects: three visual cards with concise contributions.
+- Selected Publications: five visual cards with venue, role, and contribution.
+- Experience: education, honors, and academic service.
 
 ## Interaction and accessibility
 
-- A light/dark theme toggle is persisted locally and respects the system theme.
 - Anchor navigation, visible focus states, semantic headings, reduced-motion
   handling, and responsive layouts support keyboard and mobile users.
 - Name, email, confidential employers, and unavailable paper URLs remain

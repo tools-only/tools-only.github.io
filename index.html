@@ -3,179 +3,277 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal website of an AI systems researcher based in Hangzhou." />
-  <title>AI Systems Researcher · Hangzhou</title>
+  <meta name="description" content="Personal homepage of an AI systems researcher working on agent-native infrastructure, LLM safety, and multimodal intelligence." />
+  <title>AI Systems Researcher — Homepage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=personal-20260920" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=reference-20260920" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="site-mark" href="#top" aria-label="Back to top">
-      <span class="mark-dot"></span>
-      <span>AI SYSTEMS RESEARCHER</span>
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#journey">Journey</a>
-      <a href="#projects">Projects</a>
-      <a href="#papers">Papers</a>
-    </nav>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-      <span class="theme-label">Theme</span><span class="theme-track"><span></span></span>
-    </button>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="home-link" href="#about">Homepage</a>
+      <nav aria-label="Primary navigation">
+        <a href="#about">About Me</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+      </nav>
+    </div>
   </header>
 
-  <main id="main">
-    <section id="top" class="intro-wrap">
-      <div id="about" class="intro">
-        <p class="kicker">HELLO, I AM A RESEARCHER AND BUILDER</p>
-        <h1>I study how intelligent systems <em>learn, adapt, and work together.</em></h1>
-        <p class="intro-copy">I am a PhD researcher at Zhejiang University, based in Hangzhou. My work sits at the intersection of agent-native infrastructure, large language model safety, perception, and optimization.</p>
-        <div class="intro-links">
-          <a class="primary-link" href="#projects">See selected work <span>↓</span></a>
-          <a href="https://github.com/tools-only" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+  <main id="main" class="page">
+    <section id="about" class="profile-hero" aria-label="Profile">
+      <div class="profile-visual" aria-hidden="true">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="visual-node node-one"></div>
+        <div class="visual-node node-two"></div>
+        <div class="visual-node node-three"></div>
+        <span>AI</span>
+      </div>
+
+      <div class="profile-body">
+        <p class="profile-eyebrow">RESEARCHER · SYSTEMS BUILDER</p>
+        <h1>AI Systems Researcher</h1>
+        <div class="profile-meta">
+          <span>Zhejiang University</span>
+          <span>Hangzhou, Zhejiang, China</span>
+        </div>
+        <p class="profile-tagline">Building agent-native systems and reliable multimodal intelligence for changing worlds.</p>
+        <div class="profile-links">
+          <a href="https://github.com/tools-only" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="#publications">Selected Papers</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
-      <aside class="profile-aside">
-        <div class="profile-line"><span>Currently</span><strong>PhD Candidate</strong></div>
-        <div class="profile-line"><span>At</span><strong>Zhejiang University</strong></div>
-        <div class="profile-line"><span>Based in</span><strong>Hangzhou, Zhejiang</strong></div>
-        <div class="profile-line"><span>Interested in</span><strong>Agents · Safety · Systems</strong></div>
-        <p class="aside-note">I like turning open-ended research questions into systems that can be built, tested, and improved.</p>
-      </aside>
     </section>
 
-    <section id="journey" class="section">
-      <div class="section-intro">
-        <p class="section-label">01 / JOURNEY</p>
-        <h2>A few places<br /><em>that shaped my work.</em></h2>
+    <section class="content-section">
+      <h2>About Me</h2>
+      <div class="about-copy">
+        <p class="lead">I build intelligent systems that can reason, adapt, and collaborate over long horizons.</p>
+        <p>I am a PhD candidate at Zhejiang University. My current work focuses on <strong>agent-native infrastructure</strong>, including self-evolving harnesses, sandbox orchestration, and agentic reinforcement learning. I am interested in how agents can move beyond executing tasks toward constructing and improving the systems they use to work.</p>
+        <p>My broader research spans <strong>large language model safety</strong>, multimodal perception, interpretability, and optimization. Before my doctoral studies, I worked on operating-system kernels and low-power technologies for connected devices.</p>
       </div>
-      <div class="timeline">
-        <article class="timeline-item current">
-          <time>2022 — 2027</time>
-          <div><h3>Zhejiang University</h3><p>PhD Candidate · Electronic Information<br />College of Control Science and Engineering</p></div>
-          <span>Hangzhou</span>
+    </section>
+
+    <section id="research" class="content-section">
+      <h2>Research Map</h2>
+      <p class="section-deck">Three connected directions organize my current work.</p>
+      <div class="research-map">
+        <article class="research-node node-evolve">
+          <span class="research-step">01</span>
+          <h3>Evolve</h3>
+          <p>Helping agents construct, evaluate, and improve their own harnesses, tools, and working environments.</p>
+          <div class="research-tags"><span>Meta-Harness</span><span>Agentic RL</span><span>Orchestration</span></div>
         </article>
-        <article class="timeline-item">
-          <time>2024 — 2025</time>
-          <div><h3>National University of Singapore</h3><p>Visiting PhD Student · Artificial Intelligence<br />School of Computing</p></div>
-          <span>Singapore</span>
+        <article class="research-node node-defend">
+          <span class="research-step">02</span>
+          <h3>Defend</h3>
+          <p>Understanding and mitigating vision attacks, quantization backdoors, and other failures in multimodal models.</p>
+          <div class="research-tags"><span>LLM Safety</span><span>Vision Attacks</span><span>Backdoors</span></div>
         </article>
-        <article class="timeline-item">
-          <time>2017 — 2020</time>
-          <div><h3>Hangzhou Dianzi University</h3><p>Master · Information Security<br />School of Cyberspace Science</p></div>
-          <span>Hangzhou</span>
-        </article>
-        <article class="timeline-item">
-          <time>2013 — 2017</time>
-          <div><h3>Wuhan University of Science and Technology</h3><p>Bachelor · Information Security<br />School of Computer Science and Technology</p></div>
-          <span>Wuhan</span>
-        </article>
-        <article class="timeline-item work">
-          <time>2020 — 2022</time>
-          <div><h3>Operating Systems &amp; Wearable Systems</h3><p>Kernel infrastructure, low-power terminals, and SensorHub technology for connected devices.</p></div>
-          <span>Industry</span>
+        <article class="research-node node-understand">
+          <span class="research-step">03</span>
+          <h3>Understand</h3>
+          <p>Studying perception failures, model bias, and optimization through interpretable and measurable mechanisms.</p>
+          <div class="research-tags"><span>Perception</span><span>Interpretability</span><span>Optimization</span></div>
         </article>
       </div>
     </section>
 
-    <section id="projects" class="section section-muted">
-      <div class="section-intro">
-        <p class="section-label">02 / SELECTED PROJECTS</p>
-        <h2>Systems I am<br /><em>building or exploring.</em></h2>
+    <section class="content-section">
+      <h2>Recent Highlights</h2>
+      <div class="news-panel">
+        <ul class="news-list">
+          <li><time>2026.07</time><p>Started research on <strong>Agent-Native Meta-Harness</strong>, exploring self-constructing and self-optimizing agent infrastructure.</p></li>
+          <li><time>2026.05</time><p>Started <strong>Loom</strong>, an independent multi-agent collaboration system for long-horizon work.</p></li>
+          <li><time>2026</time><p>Serving on the program committees of ECCV, NeurIPS, and ICML; also serving for AAAI 2027.</p></li>
+          <li><time>2024</time><p>Received the Zhejiang University Xuefeng Scholarship.</p></li>
+        </ul>
       </div>
-      <div class="project-list">
-        <article class="project">
-          <div class="project-meta"><span>01</span><span>2026 — PRESENT</span></div>
-          <div class="project-body">
-            <div class="project-title"><h3>Agent Self-Evolution Research</h3><span class="status">Ongoing</span></div>
-            <p class="project-summary">Research on Agent-Native Meta-Harness: enabling agents to construct, optimize, evaluate, and reuse their own working environments.</p>
-            <div class="project-details">
-              <div><strong>Self-Harness</strong><p>Automatic evolution, evaluation, version management, and task migration.</p></div>
-              <div><strong>Sandbox &amp; Orchestration</strong><p>Isolated multi-instance execution, parallel exploration, trajectory collection, and reproducible experiments.</p></div>
-              <div><strong>Agentic RL</strong><p>Training-signal construction and post-training with vLLM / Ascend vLLM, including GRPO and OPD.</p></div>
-            </div>
-            <div class="tags"><span>Agent Harness</span><span>Sandbox</span><span>Agentic RL</span></div>
+    </section>
+
+    <section id="projects" class="content-section">
+      <h2>Selected Projects</h2>
+      <p class="section-deck">Systems work that connects research ideas with working infrastructure.</p>
+
+      <article class="work-card project-card card-evolve">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">2026 — Present</span>
+          <div class="harness-diagram">
+            <i></i><i></i><i></i><i></i>
+            <b>H</b>
           </div>
-        </article>
-        <article class="project">
-          <div class="project-meta"><span>02</span><span>2026 — PRESENT</span></div>
-          <div class="project-body">
-            <div class="project-title"><h3>Loom</h3><span class="status">Independent project</span></div>
-            <p class="project-summary">A collaboration system for long-horizon tasks, helping agents and people organize work, interact with artifacts, and preserve context over time.</p>
-            <div class="project-details">
-              <div><strong>Task orchestration</strong><p>Requirements, plans, decisions, and execution progress connected into a task graph.</p></div>
-              <div><strong>Artifact interaction</strong><p>Generated artifacts become traceable, addressable, and editable through task context.</p></div>
-              <div><strong>Collaboration persistence</strong><p>Agent events, human interactions, and task state recorded for continuity and handoff.</p></div>
-            </div>
-            <div class="tags"><span>Long-horizon Tasks</span><span>Artifacts</span><span>Skills &amp; Adapters</span></div>
-            <a class="project-link" href="https://github.com/tools-only" target="_blank" rel="noreferrer">View on GitHub <span>↗</span></a>
-          </div>
-        </article>
-        <article class="project project-compact">
-          <div class="project-meta"><span>03</span><span>2020 — 2022</span></div>
-          <div class="project-body">
-            <div class="project-title"><h3>HarmonyOS Kernel &amp; Wearables</h3><span class="status">Industry</span></div>
-            <p class="project-summary">Designed LiteOS-M kernel infrastructure and contributed to low-power terminal technology for FreeBuds and Watch GT3 product lines.</p>
-          </div>
-        </article>
-      </div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">AGENT INFRASTRUCTURE</span>
+          <h3>Agent Self-Evolution Research</h3>
+          <p class="work-meta">Confidential Research Lab · Ongoing</p>
+          <p>Researching Agent-Native Meta-Harness: how agents can construct, optimize, evaluate, and reuse their own harnesses across tasks and environments.</p>
+          <ul>
+            <li>Designed a self-harness architecture with automatic evolution, evaluation, version management, and task migration.</li>
+            <li>Built sandbox orchestration for isolated execution, parallel exploration, trajectory collection, and reproducible experiments.</li>
+            <li>Connected interactive trajectories to post-training with vLLM / Ascend vLLM, GRPO, and OPD.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="work-card project-card card-loom">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">2026 — Present</span>
+          <div class="loom-diagram"><i></i><i></i><i></i><i></i><b></b></div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">MULTI-AGENT COLLABORATION</span>
+          <h3>Loom</h3>
+          <p class="work-meta">Independent Developer</p>
+          <p>A collaboration system for long-horizon tasks, centered on task organization, artifact interaction, and durable collaboration state.</p>
+          <ul>
+            <li>Links requirements, plans, execution progress, and decisions in a shared task graph.</li>
+            <li>Makes generated artifacts traceable, addressable, and continuously editable through task context.</li>
+            <li>Records agent events and human interactions for state recovery, handoff, and runtime adaptation.</li>
+          </ul>
+          <div class="work-links"><a href="https://github.com/tools-only" target="_blank" rel="noreferrer">GitHub</a></div>
+        </div>
+      </article>
+
+      <article class="work-card project-card card-systems">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">2020 — 2022</span>
+          <div class="chip-diagram"><span>LITE<br />OS</span></div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">OPERATING SYSTEMS</span>
+          <h3>HarmonyOS Kernel &amp; Wearable Systems</h3>
+          <p class="work-meta">Industry Research and Development</p>
+          <p>Designed lightweight LiteOS-M kernel infrastructure and contributed to low-power technologies for connected devices.</p>
+          <ul>
+            <li>Developed scalable core APIs, tickless operation, image save/restore, and low-power idle mechanisms.</li>
+            <li>Worked on SensorHub sensing management and resource scheduling for FreeBuds and Watch GT3 product lines.</li>
+          </ul>
+        </div>
+      </article>
     </section>
 
-    <section id="papers" class="section">
-      <div class="section-intro">
-        <p class="section-label">03 / SELECTED PAPERS</p>
-        <h2>Questions I have<br /><em>been working on.</em></h2>
-        <p class="section-note">A small selection from 12 participated papers and 7 first-author works.</p>
-      </div>
-      <div class="paper-list">
-        <article class="paper">
-          <div class="paper-meta"><span>TKDE 2026</span><span>First author · Under review</span></div>
-          <div><h3>FairPP: Capturing Pluralistic Social Equity Preferences Through Synthetic Data</h3><p>Explores how synthetic data can capture pluralistic social preferences for more personalized alignment.</p><span class="paper-area">Post-training · LoRA / DPO</span></div>
-        </article>
-        <article class="paper">
-          <div class="paper-meta"><span>ICML 2025</span><span>First author</span></div>
-          <div><h3>Defending LVLMs Against Vision Attacks Through Partial-Perception Supervision</h3><p>Studies partial-perception supervision as a defense strategy for vision-language models under adversarial visual inputs.</p><span class="paper-area">LLM safety · Multi-agent reasoning</span></div>
-        </article>
-        <article class="paper">
-          <div class="paper-meta"><span>TDSC 2025</span><span>First author</span></div>
-          <div><h3>FoolSDEdit: Deceptively Steering Your Edits Towards Targeted Attribute-aware Distributions</h3><p>Investigates controllable image-generation perturbations that steer edits toward targeted attribute distributions.</p><span class="paper-area">LLM safety · Controllable generation</span></div>
-        </article>
-        <article class="paper">
-          <div class="paper-meta"><span>CVPR Findings 2026</span><span>Second author · Program leader</span></div>
-          <div><h3>When Harmful Content Goes Invisible: Unveiling Perception Failure of LVLMs with CAMOUHARM</h3><p>Introduces a cross-modal perspective on harmful-content perception failures in large vision-language models.</p><span class="paper-area">Perception · Visual evaluation</span></div>
-        </article>
-        <article class="paper">
-          <div class="paper-meta"><span>AAAI 2021</span><span>First author</span></div>
-          <div><h3>EvaLDA: Efficient Evasion Attacks Towards Latent Dirichlet Allocation</h3><p>Develops an efficient sampling-based method for evasion attacks against topic models.</p><span class="paper-area">Optimization · Bayesian inference</span></div>
-        </article>
-        <article class="paper">
-          <div class="paper-meta"><span>Computers &amp; Security 2020</span><span>First author</span></div>
-          <div><h3>Query-efficient Label-only Attacks Against Black-box Machine Learning Models</h3><p>Studies query-efficient zeroth-order attacks when only model labels, rather than confidence scores, are available.</p><span class="paper-area">Optimization · Zeroth-order methods</span></div>
-        </article>
-      </div>
+    <section id="publications" class="content-section">
+      <h2>Selected Publications</h2>
+      <p class="section-deck">Representative work from post-training, safety, perception, and optimization.</p>
+
+      <article class="work-card paper-card paper-post">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">TKDE 2026</span>
+          <div class="paper-art art-preference"><i></i><i></i><i></i></div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">POST-TRAINING</span>
+          <h3>FairPP: Capturing Pluralistic Social Equity Preferences Through Synthetic Data</h3>
+          <p class="work-meta">First Author · Under Review</p>
+          <p>Studies how synthetic data can represent pluralistic social preferences and support personalized alignment with LoRA and DPO.</p>
+          <div class="work-links"><span>LoRA</span><span>DPO</span><span>Preference Alignment</span></div>
+        </div>
+      </article>
+
+      <article class="work-card paper-card paper-safety">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">ICML 2025</span>
+          <div class="paper-art art-perception"><i></i><i></i><b></b></div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">LLM SAFETY</span>
+          <h3>Defending LVLMs Against Vision Attacks Through Partial-Perception Supervision</h3>
+          <p class="work-meta">First Author</p>
+          <p>Introduces partial-perception supervision and weak-to-strong multi-agent reasoning to improve the robustness of large vision-language models.</p>
+          <div class="work-links"><span>Multi-Agent</span><span>Vision Attacks</span><span>Defense</span></div>
+        </div>
+      </article>
+
+      <article class="work-card paper-card paper-safety">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">TDSC 2025</span>
+          <div class="paper-art art-edit"><i></i><i></i><i></i></div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">CONTROLLABLE GENERATION</span>
+          <h3>FoolSDEdit: Deceptively Steering Your Edits Towards Targeted Attribute-aware Distributions</h3>
+          <p class="work-meta">First Author</p>
+          <p>Investigates natural perturbation compositions that steer image edits toward targeted attribute distributions.</p>
+          <div class="work-links"><span>NAS</span><span>Image Editing</span><span>Attribute Control</span></div>
+        </div>
+      </article>
+
+      <article class="work-card paper-card paper-perception">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">CVPR Findings 2026</span>
+          <div class="paper-art art-camouflage"><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">PERCEPTION</span>
+          <h3>When Harmful Content Goes Invisible: Unveiling Perception Failure of LVLMs with CAMOUHARM</h3>
+          <p class="work-meta">Second Author · Program Leader</p>
+          <p>Reveals cross-modal perception failures that cause harmful visual content to become effectively invisible to large vision-language models.</p>
+          <div class="work-links"><span>Visual Perception</span><span>Evaluation</span><span>LVLMs</span></div>
+        </div>
+      </article>
+
+      <article class="work-card paper-card paper-opt">
+        <div class="work-visual" aria-hidden="true">
+          <span class="venue-badge">AAAI 2021</span>
+          <div class="paper-art art-bayes"><i></i><i></i><i></i></div>
+        </div>
+        <div class="work-content">
+          <span class="work-category">OPTIMIZATION THEORY</span>
+          <h3>EvaLDA: Efficient Evasion Attacks Towards Latent Dirichlet Allocation</h3>
+          <p class="work-meta">First Author</p>
+          <p>Develops an efficient sampling-based method for evasion attacks against topic models through Bayesian inference.</p>
+          <div class="work-links"><span>Bayesian Inference</span><span>Evasion Attack</span><span>Sampling</span></div>
+        </div>
+      </article>
     </section>
 
-    <section class="section closing">
-      <p class="section-label">04 / A LITTLE MORE</p>
-      <div class="closing-grid">
-        <div><h2>Beyond the<br /><em>main thread.</em></h2></div>
-        <div class="closing-copy">
-          <p>My work has also been recognized through invention patents, the Zhejiang University Xuefeng Scholarship, the Huawei Software Elite Challenge, and the Tsinghua University–Qian'an DataCon.</p>
-          <p>I serve as a program committee member for ECCV 2026, NeurIPS 2026, ICML 2026, and AAAI 2027.</p>
+    <section id="experience" class="content-section">
+      <h2>Experience</h2>
+      <div class="experience-grid">
+        <div>
+          <h3>Education</h3>
+          <div class="experience-list">
+            <article><time>2022 — 2027</time><p><strong>Zhejiang University</strong><br />PhD Candidate · Electronic Information</p></article>
+            <article><time>2024 — 2025</time><p><strong>National University of Singapore</strong><br />Visiting PhD Student · Artificial Intelligence</p></article>
+            <article><time>2017 — 2020</time><p><strong>Hangzhou Dianzi University</strong><br />Master · Information Security</p></article>
+            <article><time>2013 — 2017</time><p><strong>Wuhan University of Science and Technology</strong><br />Bachelor · Information Security</p></article>
+          </div>
+        </div>
+        <div>
+          <h3>Honors &amp; Service</h3>
+          <div class="experience-list">
+            <article><time>2026</time><p><strong>Two invention patents</strong><br />Autonomous-driving safety testing and image-generation perturbations</p></article>
+            <article><time>2024</time><p><strong>Xuefeng Scholarship</strong><br />Zhejiang University</p></article>
+            <article><time>2020</time><p><strong>Outstanding Graduate Thesis</strong><br />Hangzhou Dianzi University</p></article>
+            <article><time>2019</time><p><strong>Huawei Software Elite Challenge</strong><br />Second Prize</p></article>
+            <article><time>2026–27</time><p><strong>Program Committee</strong><br />ECCV, NeurIPS, ICML, and AAAI</p></article>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Contact</h2>
+      <p>I am based in Hangzhou and interested in conversations around agents, multimodal intelligence, and reliable AI systems.</p>
+      <a href="https://github.com/tools-only" target="_blank" rel="noreferrer">github.com/tools-only ↗</a>
+      <small>Name and email are hidden because they were redacted in the supplied CV.</small>
     </section>
   </main>
 
-  <footer id="contact" class="site-footer">
-    <div><p class="section-label">CONTACT</p><h2>Thanks for<br /><em>stopping by.</em></h2></div>
-    <div class="footer-copy"><p>Name and email are hidden in the supplied CV image.</p><p>Based in <strong>Hangzhou, Zhejiang</strong>.</p><a href="https://github.com/tools-only" target="_blank" rel="noreferrer">github.com/tools-only ↗</a></div>
-    <div class="footer-bottom"><span>© 2026 · AI SYSTEMS RESEARCHER</span><a href="#top">Back to top ↑</a></div>
+  <footer>
+    <span>© 2026 · AI Systems Researcher</span>
+    <a href="#about">Back to top ↑</a>
   </footer>
-  <script src="./app.js?v=personal-20260920"></script>
+
+  <script src="./app.js?v=reference-20260920"></script>
 </body>
 </html>
