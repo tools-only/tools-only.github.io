@@ -6,7 +6,7 @@
   <meta name="description" content="MoPE 研究笔记：通过共享 Attention 适配器、FFN 低秩偏好专家和偏好感知路由，探索大语言模型的个性化对齐。">
   <title>MoPE：用低秩偏好专家探索大模型的个性化对齐 | Qi Zhou</title>
   <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="../article.css">
+  <link rel="stylesheet" href="../article.css?v=architecture-1">
 </head>
 <body>
   <a class="skip-link" href="#main">跳转到正文</a>
@@ -36,6 +36,12 @@
         <thead><tr><th scope="col">部分</th><th scope="col">设计职责</th></tr></thead>
         <tbody><tr><th scope="row">基础模型</th><td>提供共享语言能力，采用 LoRA 适配时冻结基础权重。</td></tr><tr><th scope="row">Attention 适配器</th><td>在不同专家间共享，学习共同的表示调整。</td></tr><tr><th scope="row">FFN 偏好专家</th><td>用多个低秩模块承载不同偏好类别。</td></tr><tr><th scope="row">路由器</th><td>根据偏好信号分配专家的参与权重。</td></tr></tbody>
       </table>
+
+      <figure class="architecture-figure">
+        <a href="./architecture.png" aria-label="查看 MoPE 架构图高清版本"><img src="./architecture.png" width="2400" height="1350" loading="lazy" alt="MoPE 架构：左侧是带 Attention 适配器和 MoPE 模块的 Transformer；中部偏好感知路由器将偏好信号映射到多个 FFN 专家并汇合输出；右侧专家由冻结的共享 FFN 与可训练的低秩适配分支组成。"></a>
+        <figcaption>图 1 · MoPE 原始架构图。雪花表示冻结参数，火焰表示可训练部分；结合正文，Attention 处训练的是适配器。点击图片查看高清版本，或<a href="./mope-architecture.pdf">打开 PDF 原图</a>。</figcaption>
+      </figure>
+      <p>沿图从左到右看，MoPE 位于 Transformer 的 FFN 位置；中部的偏好感知路由器决定不同专家如何参与计算；右侧进一步展开单个专家，展示冻结的共享 FFN 与可训练低秩分支。图中的多条彩色连线表达偏好与专家之间的组合关系，并不单独确定路由归一化或稀疏选择的实现。</p>
 
       <h2>动态路由：从用户偏好到专家组合</h2>
       <p>为了统一符号，这里用 M 表示偏好维度数，用 K 表示专家数。用户偏好可表示为向量 p ∈ ℝᴹ，路由器把它映射为 K 个专家权重。草稿希望把相关偏好归入共享专家，使 K 小于 M，避免为每个偏好维度都配置独立专家。</p>
@@ -77,7 +83,7 @@
       <p>在实现上，需要先明确偏好向量、分组规则、路由粒度和训练目标，再分别移除路由、专家分组与对比约束，观察收益来自哪里。专家权重或特征的相似性分析可以提供线索，但还需要行为实验来确认模块实际控制了什么。</p>
       <p>最后，个性化能力应该与通用能力和部署成本一起报告。增加专家后，参数量、显存、延迟与吞吐发生了什么变化？偏好满足程度提高时，事实准确性和任务完成质量是否保持稳定？只有补齐这些证据，才能判断这种可组合适配是否值得用于真实系统。</p>
       <p>MoPE 提供了一条值得探索的路径：以共享模型为基础，将偏好相关的调整放进轻量专家，再通过条件路由组合它们。当前的结构设想和实验记录给出了起点，而偏好表示是否可靠、专家是否可组合、收益能否复现，仍是这项工作接下来要回答的问题。</p>
-      <p class="source-note">资料说明：本文依据 MoPE 研究草稿整理；数字来自草稿表格。原稿引用的架构图与完整参考文献库未随文本提供，本文未补造图像、文献链接或实验结果。</p>
+      <p class="source-note">资料说明：本文依据 MoPE 研究草稿整理；数字来自草稿表格，架构图使用原始 PDF 渲染。完整参考文献库尚未提供。</p>
     </article>
   </main>
   <footer><span>tools-only · Blog</span><a href="../../#blog">返回博客列表</a></footer>
