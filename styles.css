@@ -55,3 +55,22 @@ footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid 
 .skip-link:focus{transform:none}
 @media(max-width:600px){.masthead-inner,.page,footer{width:calc(100% - 36px)}.masthead-inner{align-items:flex-start;flex-direction:column;gap:10px}nav{gap:15px;font-size:13px}.page{padding-top:32px}h1{font-size:29px}h2{font-size:22px}section{margin-bottom:36px}.timeline article{grid-template-columns:1fr;gap:3px}.date span{display:inline}.entry-heading{display:block}.entry-heading .date{margin:0 0 8px}body{font-size:15px}.paper-meta span{display:block}.usage-grid{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.activity-panel{border:1px solid #d8dee4;border-radius:12px;padding:22px;margin-bottom:18px;font-family:Arial,sans-serif}
+.activity-heading{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px;font-size:14px}
+.activity-heading span{font-size:12px;color:var(--muted)}
+.activity-calendar{display:grid;grid-template-rows:repeat(7,16px);grid-auto-flow:column;grid-auto-columns:16px;gap:5px;overflow-x:auto;padding:4px 2px 10px}
+.activity-day,.activity-legend i{border:1px solid #1b1f230f;border-radius:3px;background:#ebedf0;display:block}
+.activity-day{padding:0;cursor:pointer;min-width:0}
+[data-level="1"]{background:#9be9a8}[data-level="2"]{background:#40c463}[data-level="3"]{background:#30a14e}[data-level="4"]{background:#216e39}
+.activity-day:hover,.activity-day:focus-visible{outline:2px solid #0969da;outline-offset:2px}
+.activity-day:disabled{visibility:hidden}.activity-day.outside-range{opacity:.28}
+.activity-legend{display:flex;justify-content:flex-end;align-items:center;gap:5px;font:11px Arial,sans-serif;color:var(--muted);margin-top:10px}
+.activity-legend i{width:12px;height:12px}
+.usage-grid{border:0;gap:12px}
+.usage-grid div{border:1px solid #e3e8ef;border-radius:10px;background:#f8fafc;padding:18px}
+.usage-grid div:first-child{background:#eff6ff;border-color:#dbeafe}.usage-grid div:first-child strong,.usage-grid div:nth-child(3) strong{color:#2563eb}
+.usage-grid div:nth-child(4){background:#faf5ff}.usage-grid div:nth-child(4) strong{color:#9333ea}
+.usage-grid div:nth-child(5),.usage-grid div:nth-child(6){background:#f0fdf4}.usage-grid div:nth-child(5) strong,.usage-grid div:nth-child(6) strong{color:#15803d}
+.usage-controls{gap:4px;background:#f6f8fa;border-radius:8px;padding:4px;width:fit-content}
+.usage-controls button{border:0;background:transparent;border-radius:6px;padding:9px 15px}
+.usage-controls button.is-selected{background:#fff;box-shadow:0 1px 4px #1b1f231a;color:#0969da}

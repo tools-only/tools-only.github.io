@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="PhD student at Zhejiang University researching agent self-evolution, post-training, and language model safety.">
   <title>Qi Zhou | Personal Homepage</title>
-  <link rel="stylesheet" href="./styles.css?v=cv-clean-20260920">
+  <link rel="stylesheet" href="./styles.css?v=activity-1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -100,12 +100,18 @@
 
     <section id="usage">
       <h2>Model Usage</h2>
-      <p class="section-note">cc-switch usage · <span id="usage-period">2026.06.07 – 2026.08.21</span></p>
+      <p class="section-note">AI activity · <span id="usage-period">Loading usage…</span></p>
       <div class="usage-controls" role="group" aria-label="Usage date range">
         <button type="button" data-range="all" class="is-selected">All time</button>
         <button type="button" data-range="30d">30 days</button>
         <button type="button" data-range="7d">7 days</button>
         <button type="button" data-range="today">Today</button>
+      </div>
+      <div class="activity-panel">
+        <div class="activity-heading"><strong>Daily activity</strong><span>Tokens per day · click a square to explore</span></div>
+        <div id="usage-calendar" class="activity-calendar" aria-label="Daily token usage"></div>
+        <div class="activity-legend"><span>Less</span><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i><span>More</span></div>
+        <p id="usage-detail" class="usage-note" aria-live="polite">Select a day to see its usage.</p>
       </div>
       <div class="usage-grid" aria-live="polite">
         <div><strong id="usage-total">4.24B</strong><span>Total tokens</span></div>
@@ -115,7 +121,7 @@
         <div><strong id="usage-cache">3.67B</strong><span>Cache read</span></div>
         <div><strong id="usage-cost">$2,599.21</strong><span>Recorded cost</span></div>
       </div>
-      <p class="usage-note">Includes input, output, cache read, and cache creation tokens recorded by cc-switch. Cost is the local recorded estimate, not an invoice. Last snapshot: 2026.08.21.</p>
+      <p class="usage-note" id="usage-status">Historical daily rollups only; recent request logs are not included. Daily automatic sync is not enabled. Cost is a recorded estimate.</p>
     </section>
 
     <section id="service">
@@ -130,6 +136,7 @@
     </section>
   </main>
   <footer><span>tools-only · Hangzhou</span><a href="#about">Back to top ↑</a></footer>
-  <script src="./app.js?v=cv-clean-20260920"></script>
+  <script src="./app.js?v=activity-1"></script>
+  <script src="./usage.js?v=activity-1"></script>
 </body>
 </html>
