@@ -1,0 +1,15 @@
+.post{max-width:800px;font-family:Georgia,"Noto Serif CJK SC","Songti SC",SimSun,serif;line-height:1.95;overflow-wrap:anywhere}
+.post-header{margin-bottom:32px}
+.post h1{font-size:32px;line-height:1.5;margin-bottom:18px}
+.post h2{margin-top:40px;font-size:23px}
+.post p{margin-bottom:20px}
+.post .section-note{line-height:1.8}
+.equation{padding:16px;margin:22px 0;background:#f7f8fa;text-align:center;font:18px/1.8 Georgia,serif;overflow-x:auto}
+.post table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px;line-height:1.7;text-align:left}
+.post caption{text-align:left;color:var(--muted);margin-bottom:10px}
+.post th,.post td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.post thead th{background:#f7f8fa}
+.table-scroll{overflow-x:auto}
+.table-scroll table{min-width:690px}
+.source-note{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:14px}
+@media(max-width:600px){.post h1{font-size:26px}.post h2{font-size:21px}.post{font-size:16px}}
