@@ -1,0 +1,276 @@
+/* Shared light theme for the workspace and project architecture.
+   Keep decoration on the page margins; content and diagrams use opaque surfaces. */
+:root {
+  color-scheme: light;
+  --loom-paper: #fcfdfb;
+  --loom-surface: #ffffff;
+  --loom-ink: #30434b;
+  --loom-muted: #60757e;
+  --loom-line: #e0e9e9;
+  --loom-sky: #eaf6fc;
+  --loom-blue: #287b9f;
+  --loom-pink: #fceef4;
+  --loom-rose: #a55479;
+  --loom-green: #f0f7e9;
+  --loom-leaf: #527c42;
+  --loom-shadow: 0 8px 28px rgba(55, 88, 94, .045);
+  --loom-font: "Aptos", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  background: var(--loom-paper);
+}
+body.loom-light {
+  --ink: var(--loom-ink);
+  --smoke: var(--loom-muted);
+  --paper: var(--loom-paper);
+  --accent-iris: var(--loom-blue);
+  --accent-lime: #d8edc3;
+  --link: var(--loom-blue);
+  --link-hover: #1f6584;
+  --day-ink: var(--loom-ink);
+  --day-blue: var(--loom-blue);
+  --day-accent: #c6e8f7;
+  --loom-shell-ink: var(--loom-ink);
+  --loom-shell-panel: #fff;
+  --loom-shell-line: var(--loom-line);
+  margin: 0;
+  background: var(--loom-paper);
+  color: var(--loom-ink);
+  font-family: var(--loom-font);
+  line-height: 1.65;
+  isolation: isolate;
+}
+.loom-light::before {
+  z-index: -1;
+  opacity: .7;
+  background: url("assets/loom-garden.svg") center 60px / 1600px 1100px repeat-y;
+  mask-image: none;
+}
+.loom-light ::selection { color: var(--loom-ink); background: #cceaf8; }
+.loom-light :is(button, a, input, textarea, summary):focus-visible {
+  outline: 2px solid var(--loom-blue);
+  outline-offset: 4px;
+}
+.loom-light :is(button, input, textarea) { font-family: inherit; }
+.loom-light :is(h1, h2, h3) { color: var(--loom-ink); line-height: 1.35; }
+.loom-light .refraction-bg { display: none; }
+
+/* Masthead and page rhythm. */
+.loom-light .architecture-page { padding: 0 0 56px; overflow-x: hidden; }
+.loom-light .architecture-nav {
+  height: 80px;
+  padding: 0 max(32px, calc((100vw - 1360px) / 2));
+  background: rgba(255, 255, 255, .96);
+  border-color: var(--loom-line);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.loom-light .brand-mark { gap: 13px; font: 750 25px/1 var(--loom-font); letter-spacing: -.06em; }
+.loom-light .brand-mark i {
+  width: 24px;
+  height: 24px;
+  border: 6px solid #97d4ee;
+  border-right-color: transparent;
+  border-radius: 50%;
+  background: none;
+  box-shadow: none;
+  transform: rotate(-30deg);
+}
+.loom-light :is(.architecture-nav a, .loom-local-status, .loom-local-path) { color: var(--loom-muted); font-size: 12px; }
+.loom-light .loom-local-path { margin-left: 14px; padding-left: 24px; }
+.loom-light .loom-local-status i { background: #89b969; box-shadow: 0 0 0 4px var(--loom-green); }
+.loom-light .loom-refresh-btn { min-height: 38px; padding: 8px 16px; border-color: var(--loom-line); border-radius: 12px; box-shadow: none; }
+.loom-light .architecture-intro { display: none; }
+.loom-light .architecture-intro .kicker { color: var(--loom-blue); font-size: 11px; letter-spacing: .18em; }
+.loom-light .kicker-rule { width: 28px; height: 3px; border-radius: 2px; background: #9ad7f0; }
+.loom-light .architecture-intro h1 { margin: 18px 0; font: 650 clamp(36px, 4.5vw, 54px)/1.25 var(--loom-font); letter-spacing: -.035em; }
+.loom-light .architecture-intro p { max-width: 740px; font-size: 15px; line-height: 1.9; color: var(--loom-muted); }
+.loom-light .intro-stamp { padding: 18px 22px; background: var(--loom-green); border-color: #dbe8d1; border-radius: 18px 18px 18px 4px; color: var(--loom-leaf); }
+.loom-light .intro-stamp strong { color: var(--loom-leaf); line-height: 1.7; }
+.loom-light .ade-architecture-view,
+.loom-light .loom-project-console {
+  width: calc(100% - 64px);
+  max-width: 1296px;
+  margin: 0 auto;
+  border: 1px solid var(--loom-line);
+  border-radius: 22px;
+  background: var(--loom-surface);
+  box-shadow: var(--loom-shadow);
+}
+.loom-light .ade-architecture-view { margin-top: 24px; }
+.loom-light .architecture-surface-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 32px 10px; }
+.loom-light .architecture-surface-label { color: var(--loom-blue); font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+.loom-light .architecture-surface-head #architecture-view-status { padding: 7px 12px; background: var(--loom-sky); color: var(--loom-blue); border: 1px solid #cee7f2; border-radius: 999px; font-size: 11px; }
+.loom-light .architecture-surface-head + #architecture-view-meta { padding-top: 0; }
+.loom-light .ade-architecture-view > header { padding: 28px 32px 22px; gap: 20px; border-bottom-color: var(--loom-line); }
+.loom-light .ade-architecture-view h2 { font: 600 23px/1.4 var(--loom-font); color: var(--loom-ink); }
+.loom-light :is(.ade-architecture-kicker, .loom-capabilities-kicker, .loom-console-card-kicker) { color: var(--loom-blue); font-size: 10px; letter-spacing: .13em; }
+.loom-light .ade-architecture-view #architecture-view-status { padding: 8px 13px; background: var(--loom-sky); color: var(--loom-blue); border-color: #cee7f2; white-space: normal; font-size: 11px; }
+.loom-light #architecture-view-meta { padding: 18px 32px 4px; color: var(--loom-muted); overflow-wrap: anywhere; }
+.loom-light #architecture-likec4-host { padding: 12px 24px 26px; background: #fff; }
+.loom-light .loom-architecture-toolbar { padding: 12px 8px 18px; gap: 16px; flex-wrap: wrap; color: var(--loom-muted); }
+.loom-light .loom-architecture-toolbar b { color: var(--loom-ink); }
+.loom-light .loom-architecture-toggle { padding: 10px 14px; border-radius: 10px; color: var(--loom-blue); background: var(--loom-sky); border-color: #cee7f2; }
+.loom-light :is(.loom-architecture-focus-dot, .loom-architecture-dot) { background: #86bd70; box-shadow: none; }
+
+/* SVG needs its own light palette: HTML text colors cannot recolor diagram nodes. */
+.loom-light .loom-architecture-canvas { max-height: 720px; scrollbar-color: #bbd3dd #f6fafb; scrollbar-width: thin; }
+.loom-light .loom-mermaid-canvas { overflow: auto; padding: 10px 2px 8px; scrollbar-color: #bbd3dd #f6fafb; scrollbar-width: thin; }
+.loom-light .loom-mermaid-canvas { contain: paint; }
+.loom-light .loom-mermaid-diagram { min-width: 960px; min-height: 320px; display: grid; place-items: center; color: var(--loom-muted); }
+.loom-light .loom-mermaid-diagram svg { display: block; width: 100%; min-width: 960px; height: auto; max-height: 670px; }
+.loom-light .loom-mermaid-diagram .cluster rect { fill: #fbfdfd !important; stroke: #dcebed !important; }
+.loom-light .loom-mermaid-diagram .cluster-label text { fill: var(--loom-muted) !important; font-size: 12px !important; letter-spacing: .08em; }
+.loom-light .loom-mermaid-diagram .edgeLabel { background: #fff !important; color: var(--loom-muted) !important; }
+.loom-light .loom-mermaid-diagram .edgeLabel rect { fill: #fff !important; opacity: .92; }
+.loom-light .loom-mermaid-diagram .nodeLabel { color: var(--loom-ink) !important; font-family: var(--loom-font) !important; font-size: 14px !important; }
+.loom-light .loom-mermaid-canvas .loom-architecture-legend { margin: 8px; }
+.loom-light .loom-architecture-focus-canvas svg { min-width: 1240px; }
+.loom-light .loom-architecture-canvas .loom-architecture-grid { opacity: .17; }
+.loom-light .loom-architecture-canvas .loom-architecture-lane { fill: #f8fbfc; stroke: #e3edef; }
+.loom-light .loom-architecture-canvas :is(.loom-architecture-lane-label, .loom-architecture-focus-caption) { fill: var(--loom-muted); }
+.loom-light .loom-architecture-node { --node-bg: var(--loom-sky); --node-line: #b4ddec; --node-accent: #7bc5e4; }
+.loom-light .loom-architecture-node:is([data-kind="data_and_evidence"], [data-kind="evaluation"]) { --node-bg: var(--loom-green); --node-line: #cadebb; --node-accent: #9bc57e; }
+.loom-light .loom-architecture-node:is([data-kind="boundary"], [data-kind="operations"]) { --node-bg: var(--loom-pink); --node-line: #efcddd; --node-accent: #e5a4c3; }
+.loom-light .loom-architecture-canvas .loom-architecture-node rect { fill: var(--node-bg); stroke: var(--node-line); stroke-width: 1.4; filter: none; }
+.loom-light .loom-architecture-canvas .loom-architecture-node .loom-architecture-accent { fill: var(--node-accent); stroke: none; }
+.loom-light .loom-architecture-canvas .loom-architecture-node text { fill: var(--loom-ink); }
+.loom-light .loom-architecture-canvas .loom-architecture-node :is(.loom-architecture-kind, .loom-architecture-focus-subtitle, .loom-architecture-focus-source) { fill: #596f79; }
+.loom-light .loom-architecture-focus-node[data-tier="support"] { opacity: 1; }
+.loom-light .loom-architecture-canvas .loom-architecture-focus-node[data-tier="support"] rect { fill: #fff; }
+.loom-light .loom-architecture-canvas .loom-architecture-focus-node[data-tier="support"] .loom-architecture-accent { fill: var(--node-accent); }
+.loom-light .loom-architecture-canvas .loom-architecture-node:is(:hover, :focus) rect { stroke: var(--loom-blue); stroke-width: 2; filter: drop-shadow(0 3px 6px #cce1e855); }
+.loom-light :is(.loom-architecture-edge, .loom-architecture-focus-edge) { stroke: #88b4c5; opacity: .9; }
+.loom-light .loom-architecture-canvas marker path { fill: #88b4c5; }
+.loom-light :is(.loom-architecture-edge-label, .loom-architecture-focus-edge-label) { fill: #587783; }
+.loom-light :is(.loom-architecture-legend, .loom-architecture-support-detail) { padding-top: 18px; border-color: var(--loom-line); color: var(--loom-muted); line-height: 1.8; }
+.loom-light .loom-architecture-legend { flex-wrap: wrap; }
+.loom-light .loom-architecture-support-detail :is(summary, span, b) { color: var(--loom-muted); }
+.loom-light .loom-architecture-empty { min-height: 320px; padding: 32px; }
+.loom-light .loom-architecture-empty strong { color: var(--loom-ink); font-size: 18px; }
+.loom-light .loom-architecture-empty span { color: var(--loom-blue); }
+.loom-light .loom-architecture-empty small { color: var(--loom-muted); }
+
+/* A spacious console; pastel is an accent, white remains the main surface. */
+.loom-light .loom-project-console { margin-top: 40px; padding: 32px; }
+.loom-light.loom-architecture-route .loom-project-console { margin-top: 24px; }
+.loom-light.loom-architecture-route .loom-console-heading { align-items: center; padding-bottom: 16px; }
+.loom-light.loom-architecture-route .loom-console-heading .loom-capabilities-kicker,
+.loom-light.loom-architecture-route .loom-console-heading p { display: none; }
+.loom-light.loom-architecture-route .loom-console-heading h2 { margin: 0; font-size: 22px; }
+.loom-light.loom-architecture-route .loom-console-summary { margin: 20px 0; }
+.loom-light.loom-architecture-route .loom-console-stat { min-height: 92px; padding: 17px 20px; }
+.loom-light .loom-console-heading { padding-bottom: 28px; gap: 28px; }
+.loom-light .loom-console-heading h2 { margin: 12px 0; font: 600 28px/1.5 var(--loom-font); color: var(--loom-ink); }
+.loom-light .loom-console-heading p { color: var(--loom-muted); font-size: 14px; line-height: 1.85; }
+.loom-light .loom-capabilities-home-link { color: var(--loom-blue); }
+.loom-light .loom-console-summary { margin: 28px 0; gap: 16px; border: 0; background: none; overflow: visible; }
+.loom-light .loom-console-stat { min-width: 0; min-height: 118px; padding: 22px; border: 1px solid var(--loom-line); border-radius: 16px; background: #fff; }
+.loom-light .loom-console-stat:nth-child(1) { background: var(--loom-sky); border-color: #dcecf4; }
+.loom-light .loom-console-stat:nth-child(3) { background: var(--loom-pink); border-color: #f2dfe8; }
+.loom-light .loom-console-stat:nth-child(4) { background: var(--loom-green); border-color: #e0ead7; }
+.loom-light .loom-console-stat strong { margin: 12px 0 8px; color: var(--loom-ink); font-size: 22px; overflow-wrap: anywhere; }
+.loom-light .loom-console-stat.is-project strong { color: var(--loom-blue); }
+.loom-light .loom-console-stat.is-state strong { color: var(--loom-leaf); }
+.loom-light .loom-console-stat :is(span, small) { color: var(--loom-muted); white-space: normal; overflow-wrap: anywhere; }
+.loom-light .loom-console-tabs { gap: 12px; padding: 0 0 18px; margin-bottom: 28px; }
+.loom-light .loom-console-tab { flex-shrink: 0; min-height: 44px; padding: 11px 18px; border-radius: 12px; color: var(--loom-muted); font-size: 13px; }
+.loom-light .loom-console-tab.is-active { background: var(--loom-sky); color: var(--loom-blue); border-color: #d2e9f4; box-shadow: none; }
+.loom-light :is(.loom-pulse-grid, .loom-core-columns, .loom-activity-layout, .loom-architecture-position-layout, .loom-evidence-layout, .loom-notifications-layout) { gap: 24px; }
+.loom-light :is(.loom-pulse-hero, .loom-pulse-now, .loom-core-position, .loom-hierarchy, .loom-activity-main, .loom-activity-aside, .loom-position-map, .loom-position-inspector, .loom-evidence-main, .loom-evidence-side, .loom-inbox, .loom-notification-rail) { min-width: 0; padding: 26px; border-color: var(--loom-line); border-radius: 16px; background: #fff; box-shadow: none; }
+.loom-light .loom-pulse-now { background: #f8fbf4; }
+.loom-light .loom-pulse-title-row h3 { line-height: 1.5; }
+.loom-light :is(.loom-console-muted, .loom-console-loading, .loom-event-body p) { color: var(--loom-muted); font-size: 13px; line-height: 1.85; }
+.loom-light .loom-console-loading { padding: 28px; }
+.loom-light .loom-console-loading.is-error { color: #995775; background: var(--loom-pink); border-radius: 12px; }
+.loom-light .loom-control-btn { min-height: 42px; padding: 10px 16px; border-radius: 11px; }
+.loom-light .loom-control-btn.is-primary { color: #245a72; background: #d4edf9; border-color: #b9ddec; }
+.loom-light .loom-module-card { padding: 22px; border-radius: 12px; }
+.loom-light :is(.loom-core-position, .loom-hierarchy) { margin-top: 24px; }
+.loom-light :is(.loom-module-card, .loom-position-node).is-mint { border-color: #bfd9ad; }
+.loom-light :is(.loom-module-card, .loom-position-node).is-violet { border-color: #e9bbd0; }
+.loom-light :is(.loom-module-card, .loom-position-node).is-amber { border-color: #acd9ec; }
+.loom-light .loom-color-legend i.is-violet { background: #d594b4; }
+.loom-light .loom-color-legend i.is-amber { background: #7dbbd7; }
+.loom-light .loom-event-type.is-agent { color: var(--loom-rose); background: var(--loom-pink); }
+.loom-light .loom-tree-row { min-height: 64px; padding-top: 15px; padding-bottom: 15px; }
+.loom-light .loom-tree-level:is(.worknode, .session) { color: var(--loom-rose); }
+.loom-light .loom-event { padding-top: 24px; padding-bottom: 24px; }
+.loom-light .loom-filter-chip { min-height: 36px; padding: 8px 12px; }
+.loom-light .loom-file-row { padding: 16px; }
+
+/* Workspace landing surface shares the same color and spacing language. */
+.loom-light #anchor-toolbar { min-height: 76px; padding: 14px 32px; background: #fff; border-color: var(--loom-line); box-shadow: none; backdrop-filter: none; }
+.loom-light .toolbar-brand { color: var(--loom-ink); }
+.loom-light .toolbar-domain-tabs { gap: 8px; background: #f5fafc; border-color: var(--loom-line); }
+.loom-light .domain-tab.active { color: var(--loom-blue); background: #dff1fa; box-shadow: none; }
+.loom-light #anchor-debate-trigger { background: var(--loom-sky); color: var(--loom-blue); border-color: #cce6f1; }
+.loom-light #anchor-hands-config-btn { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--loom-line); border-radius: 12px; background: #fff; color: var(--loom-muted); cursor: pointer; }
+.loom-light :is(.anc-side-panel, #anchor-inbox-panel) { background: #fff; border: 1px solid var(--loom-line); box-shadow: var(--loom-shadow); backdrop-filter: none; }
+.loom-light .anchor-home { padding: 72px 32px 56px; }
+.loom-light .home-inner--daydream { width: min(840px, 100%); min-height: calc(100vh - 230px); }
+.loom-light .home-copy { gap: 32px; }
+.loom-light .home-copy h1 { font-size: clamp(42px, 6vw, 76px); line-height: 1.2; letter-spacing: -.055em; }
+.loom-light .home-copy .home-prompt { min-height: 76px; padding: 12px 14px 12px 24px; border-radius: 22px; background: #fff; border: 1px solid #d5e5eb; box-shadow: var(--loom-shadow); }
+.loom-light .home-prompt-submit { min-height: 48px; background: #cceaf8; color: #255b74; box-shadow: none; }
+.loom-light .home-branch-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.loom-light .branch-chip { display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 10px 16px; background: #fff; border: 1px solid var(--loom-line); border-radius: 12px; color: var(--loom-muted); cursor: pointer; }
+.loom-light .branch-chip:hover { border-color: #aed8ea; background: var(--loom-sky); }
+.loom-light .home-prompt i { color: var(--loom-blue); }
+.loom-light .home-prompt-input::placeholder { color: #6c808b; }
+.loom-light .branch-chip:is(.active, .is-active) { background: var(--loom-sky); color: var(--loom-blue); border-color: #b9dfef; }
+.loom-light .home-suggestions { display: grid; max-width: 720px; width: 100%; gap: 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.loom-light .home-suggestions button { min-height: 64px; padding: 18px 20px; border-radius: 16px; background: #fff; border: 1px solid var(--loom-line); box-shadow: none; }
+.loom-light .home-suggestions button:nth-child(3n + 1) i { background: var(--loom-sky); color: var(--loom-blue); }
+.loom-light .home-suggestions button:nth-child(3n + 2) i { background: var(--loom-pink); color: var(--loom-rose); }
+.loom-light .home-suggestions button:nth-child(3n) i { background: var(--loom-green); color: var(--loom-leaf); }
+.loom-light .home-suggestions button:is(:hover, .is-selected) { border-color: #9bcfe4; background: #f5fbfe; box-shadow: none; }
+.loom-light #anchor-stage { padding: 32px; }
+.loom-light #anchor-stage { overflow-x: hidden; }
+.loom-light #anchor-stage > .ade-architecture-view { margin-top: 0; }
+.loom-light #anchor-stage .ade-architecture-view { width: 100%; }
+
+@media (max-width: 1000px) {
+  .loom-light .architecture-intro { display: none; }
+  .loom-light .intro-stamp { display: none; }
+  .loom-light .loom-console-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .loom-light .loom-core-columns { grid-template-columns: 1fr; }
+  .loom-light .loom-local-path { display: none; }
+}
+@media (max-width: 700px) {
+  .loom-light::before { background-size: 1000px auto; opacity: .4; }
+  .loom-light .architecture-nav { height: 68px; padding: 0 20px; }
+  .loom-light .architecture-intro { display: none; }
+  .loom-light :is(.ade-architecture-view, .loom-project-console) { width: calc(100% - 32px); border-radius: 18px; }
+  .loom-light .ade-architecture-view > header { padding: 24px 20px 18px; }
+  .loom-light .architecture-surface-head { padding: 16px 20px 8px; }
+  .loom-light #architecture-view-meta { padding: 16px 20px 4px; }
+  .loom-light #architecture-likec4-host { padding: 8px 12px 20px; }
+  .loom-light .loom-project-console { margin: 28px auto 0; padding: 24px 18px; }
+  .loom-light .loom-console-heading h2 { font-size: 24px; }
+  .loom-light .loom-console-summary { gap: 12px; }
+  .loom-light .loom-console-stat { padding: 18px 14px; }
+  .loom-light .loom-console-stat strong { font-size: 18px; }
+  .loom-light .loom-console-tabs { gap: 6px; overflow-x: auto; }
+  .loom-light .loom-console-tab { padding: 10px 14px; }
+  .loom-light .loom-pulse-title-row { flex-wrap: wrap; }
+  .loom-light :is(.loom-pulse-hero, .loom-pulse-now, .loom-core-position, .loom-hierarchy, .loom-activity-main, .loom-activity-aside, .loom-position-map, .loom-position-inspector, .loom-evidence-main, .loom-evidence-side, .loom-inbox, .loom-notification-rail) { padding: 20px; }
+  .loom-light #anchor-toolbar { padding: 12px 16px; flex-wrap: wrap; }
+  .loom-light .toolbar-domain-tabs { flex: 0 0 100%; width: 100%; overflow-x: auto; }
+  .loom-light #trigger-context { top: auto; bottom: 20px; right: 120px; }
+  .loom-light #trigger-timeline { top: auto; bottom: 20px; right: 68px; }
+  .loom-light #trigger-inbox { top: auto; bottom: 20px; right: 16px; }
+  .loom-light .anc-panel-trigger { min-width: 44px; min-height: 44px; border-radius: 14px; background: #fff; box-shadow: var(--loom-shadow); }
+  .loom-light :is(#anchor-context-panel, #anchor-timeline-panel, #anchor-inbox-panel) { top: auto; bottom: 80px; max-height: calc(100dvh - 180px); }
+  .loom-light .anchor-home { padding: 44px 20px 92px; }
+  .loom-light .home-copy { gap: 28px; }
+  .loom-light .home-suggestions { grid-template-columns: 1fr; }
+  .loom-light .home-copy .home-prompt { padding-left: 16px; }
+  .loom-light .home-prompt-submit { min-width: 48px; padding: 12px; }
+  .loom-light .home-prompt-submit span { display: none; }
+  .loom-light #anchor-stage { padding: 20px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loom-light *, .loom-light *::before, .loom-light *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.demo-notice { padding: 12px 16px; border: 1px solid #c9d4cb; border-radius: 12px; color: #40564b; background: #f7faf6; font: 14px/1.6 sans-serif; }
+

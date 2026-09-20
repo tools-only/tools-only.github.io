@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loom — 项目架构</title>
+  <link rel="stylesheet" href="architecture-view.css">
+  <link rel="stylesheet" href="loom-light.css">
+</head>
+<body class="loom-light loom-architecture-route">
+  <main class="architecture-page">
+    <nav class="architecture-nav"><div class="loom-app-identity"><span class="brand-mark"><i></i>Loom</span><span><a href="/#projects">← Projects</a></span></div><button type="button" class="loom-refresh-btn" onclick="window.location.reload()">重新载入快照</button></nav>
+    <p class="demo-notice">只读 Demo · 捕获于 2026-09-20T09:49:19Z · 展示项目快照，不连接实时 Agent 或本地工作区。</p>
+    <section class="ade-architecture-view" aria-label="项目架构关系视图">
+      <div class="architecture-surface-head"><span class="architecture-surface-label">SYSTEM MAP · PRIMARY FLOW</span><span id="architecture-view-status">等待捕获</span></div>
+      <div id="architecture-view-meta">AI-understood · evidence-backed</div>
+      <div id="architecture-likec4-host"><div class="loom-architecture-empty"><span>◌</span><strong>正在加载项目架构</strong></div></div>
+    </section>
+    <section class="loom-project-console" aria-labelledby="loom-console-title">
+      <header class="loom-console-heading">
+        <div><span class="loom-capabilities-kicker">HUMAN AGENT WORKSPACE</span><h2 id="loom-console-title">项目状态快照</h2><p>先看结论；架构、证据和任务细节按需展开。</p></div>
+        <div class="loom-console-heading-actions"><span class="loom-read-model-badge">已捕获的记录</span></div>
+      </header>
+      <div class="loom-console-summary" id="loom-console-summary" aria-live="polite">
+        <div class="loom-console-stat"><span>PROJECT</span><strong>正在读取项目</strong><small>loading</small></div>
+        <div class="loom-console-stat"><span>AGENT STATUS</span><strong>—</strong><small>runtime projection</small></div>
+        <div class="loom-console-stat"><span>CURRENT LOCATION</span><strong>—</strong><small>long-running task coordinate</small></div>
+        <div class="loom-console-stat"><span>TRUST + ATTENTION</span><strong>—</strong><small>evidence and blockers</small></div>
+      </div>
+      <nav class="loom-console-tabs" role="tablist" aria-label="Project control views">
+        <button class="loom-console-tab is-active" type="button" role="tab" aria-selected="true" data-console-view="overview">首页</button>
+        <button class="loom-console-tab" type="button" role="tab" aria-selected="false" data-console-view="architecture">架构细节</button>
+        <button class="loom-console-tab" type="button" role="tab" aria-selected="false" data-console-view="activity">任务</button>
+        <button class="loom-console-tab" type="button" role="tab" aria-selected="false" data-console-view="evidence">证据</button>
+        <button class="loom-console-tab" type="button" role="tab" aria-selected="false" data-console-view="knowledge">工作范围</button>
+        <button class="loom-console-tab" type="button" role="tab" aria-selected="false" data-console-view="notifications">关注</button>
+      </nav>
+      <div class="loom-console-view" id="loom-console-view" role="tabpanel" aria-live="polite"><div class="loom-console-loading">正在读取项目控制面…</div></div>
+    </section>
+  </main>
+  <script src="snapshot.js"></script>
+  <script src="architecture-view.js"></script>
+  <script>window.LoomArchitectureView.mount({ apiBase: '' });</script>
+  <script src="loom-project-console.js"></script>
+  <script>window.LoomProjectConsole.mount({ apiBase: '' });</script>
+</body>
+</html>
+
