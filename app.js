@@ -1,5 +1,5 @@
 const sections = [...document.querySelectorAll('main section[id]')];
-const navLinks = [...document.querySelectorAll('.masthead nav a')];
+const navLinks = [...document.querySelectorAll('[data-section-nav] a[href^="#"]')];
 
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {

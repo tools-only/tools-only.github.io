@@ -5,30 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="PhD student at Zhejiang University researching agent self-evolution, post-training, and language model safety.">
   <title>Qi Zhou | Personal Homepage</title>
-  <link rel="stylesheet" href="./styles.css?v=activity-1">
+  <link rel="preload" href="./assets/OpenSans.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./academic.css?v=academic-1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="masthead">
-    <div class="masthead-inner">
-      <a class="home-link" href="#about">tools-only</a>
-      <nav aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="#blog">Blog</a>
-        <a href="#usage">Usage</a>
-      </nav>
-    </div>
-  </header>
   <main id="main" class="page">
     <section id="about" class="profile">
-      <h1>Qi</h1>
-      <p class="affiliation">PhD Student · Zhejiang University</p>
-      <p class="location">Hangzhou, Zhejiang, China</p>
-      <p>I am pursuing a PhD in Electronic Information at the College of Control Science and Engineering, Zhejiang University. I was a visiting PhD student in Artificial Intelligence at the National University of Singapore from September 2024 to October 2025.</p>
-      <p>I am interested in <strong>AI agents</strong>, <strong>Agent harness</strong>, <strong>self-evolution</strong>, and systems (with two years of industry experience in systems development). I am particularly curious about how agents learn from experience, adapt their own execution environments, and collaborate with people over long-horizon tasks.</p>
-      <a href="https://github.com/tools-only">GitHub ↗</a>
+      <div class="profile-photo">
+        <img src="./assets/github-avatar.png" alt="tools-only's GitHub avatar: a cat beside guitar pedals" width="376" height="376" fetchpriority="high">
+      </div>
+      <div class="profile-content">
+        <h1>Qi Zhou</h1>
+        <p class="position">PhD Student</p>
+        <p class="affiliation">College of Control Science and Engineering<br>Zhejiang University, China</p>
+        <p class="location">Hangzhou, Zhejiang, China</p>
+        <p>I am pursuing a PhD in Electronic Information at the College of Control Science and Engineering, Zhejiang University. I was a visiting PhD student in Artificial Intelligence at the National University of Singapore from September 2024 to October 2025.</p>
+        <p>I am interested in <strong>AI agents</strong>, <strong>Agent harness</strong>, <strong>self-evolution</strong>, and systems (with two years of industry experience in systems development). I am particularly curious about how agents learn from experience, adapt their own execution environments, and collaborate with people over long-horizon tasks.</p>
+        <nav class="profile-links" data-section-nav aria-label="Primary navigation">
+          <a href="#publications">Selected Publications</a>
+          <a href="#projects">Selected Projects</a>
+          <a href="#blog">Blog</a>
+          <a href="#usage">Model Usage</a>
+          <a href="#service">Honors &amp; Service</a>
+          <a href="https://github.com/tools-only">GitHub</a>
+        </nav>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Selected Publications</h2>
+      <p class="section-note">Co-authored 12 papers, including 7 as first author. Selected works below.</p>
+      <article class="paper publication">
+        <p class="publication-venue">TKDE<span>2026</span></p>
+        <div class="publication-content">
+          <h3>FairPP: Capturing Pluralistic Social Equity Preferences Through Synthetic Data</h3>
+          <p class="publication-role">First author · Under review</p>
+          <p class="publication-description">Synthesizes diverse preferences through social surveys and role-playing, with reweighting for personalized alignment using LoRA and DPO.</p>
+        </div>
+      </article>
+      <article class="paper publication">
+        <p class="publication-venue">ICML<span>2025</span></p>
+        <div class="publication-content">
+          <h3>Defending LVLMs Against Vision Attacks Through Partial-Perception Supervision</h3>
+          <p class="publication-role">First author</p>
+          <p class="publication-description">A training-free black-box defense based on weak-to-strong multi-agent reasoning and partial-perception supervision.</p>
+        </div>
+      </article>
+      <article class="paper publication">
+        <p class="publication-venue">TDSC<span>2025</span></p>
+        <div class="publication-content">
+          <h3>FoolSDEdit: Deceptively Steering Your Edits Towards Targeted Attribute-aware Distribution</h3>
+          <p class="publication-role">First author</p>
+          <p class="publication-description">Uses neural architecture search to compose natural perturbations that subtly control the attribute distribution of generated images.</p>
+        </div>
+      </article>
+      <article class="paper publication">
+        <p class="publication-venue">CVPR Findings<span>2026</span></p>
+        <div class="publication-content">
+          <h3>When Harmful Content Goes Invisible: Unveiling Perception Failure of LVLMs with CAMOUHARMTI</h3>
+          <p class="publication-role">Second author · Program leader</p>
+          <p class="publication-description">Evaluates perception across viewing distances using visual camouflage and examines near-view effects in large vision-language models.</p>
+        </div>
+      </article>
+      <article class="paper publication">
+        <p class="publication-venue">AAAI<span>2021</span></p>
+        <div class="publication-content">
+          <h3>EvaLDA: Efficient Evasion Attacks Towards Latent Dirichlet Allocation</h3>
+          <p class="publication-role">First author</p>
+          <p class="publication-description">Develops efficient evasion attacks using Gibbs sampling in place of inference.</p>
+        </div>
+      </article>
+      <article class="paper publication">
+        <p class="publication-venue">Computers &amp; Security<span>2020</span></p>
+        <div class="publication-content">
+          <h3>Query-efficient Label-only Attacks Against Black-box Machine Learning Models</h3>
+          <p class="publication-role">First author</p>
+          <p class="publication-description">Uses local unimodal geometry for query-efficient black-box attacks with label-only feedback.</p>
+        </div>
+      </article>
     </section>
 
     <section id="projects">
@@ -52,41 +107,6 @@
           <li><strong>Artifact interaction:</strong> Structured anchors connect generated artifacts to task context for feedback, local edits, and provenance tracking.</li>
           <li><strong>Persistent collaboration state:</strong> Records agent execution, human interactions, and artifact evolution; Skills and Adapters support different runtimes, state recovery, and human takeover.</li>
         </ul>
-      </article>
-    </section>
-
-    <section id="publications">
-      <h2>Selected Publications</h2>
-      <p class="section-note">Co-authored 12 papers, including 7 as first author. Selected works below.</p>
-      <article class="paper">
-        <p class="paper-meta">TKDE · 2026 <span>· First author · Under review</span></p>
-        <h3>FairPP: Capturing Pluralistic Social Equity Preferences Through Synthetic Data</h3>
-        <p>Synthesizes diverse preferences through social surveys and role-playing, with reweighting for personalized alignment using LoRA and DPO.</p>
-      </article>
-      <article class="paper">
-        <p class="paper-meta">ICML · 2025 <span>· First author</span></p>
-        <h3>Defending LVLMs Against Vision Attacks Through Partial-Perception Supervision</h3>
-        <p>A training-free black-box defense based on weak-to-strong multi-agent reasoning and partial-perception supervision.</p>
-      </article>
-      <article class="paper">
-        <p class="paper-meta">TDSC · 2025 <span>· First author</span></p>
-        <h3>FoolSDEdit: Deceptively Steering Your Edits Towards Targeted Attribute-aware Distribution</h3>
-        <p>Uses neural architecture search to compose natural perturbations that subtly control the attribute distribution of generated images.</p>
-      </article>
-      <article class="paper">
-        <p class="paper-meta">CVPR Findings · 2026 <span>· Second author · Program leader</span></p>
-        <h3>When Harmful Content Goes Invisible: Unveiling Perception Failure of LVLMs with CAMOUHARMTI</h3>
-        <p>Evaluates perception across viewing distances using visual camouflage and examines near-view effects in large vision-language models.</p>
-      </article>
-      <article class="paper">
-        <p class="paper-meta">AAAI · 2021 <span>· First author</span></p>
-        <h3>EvaLDA: Efficient Evasion Attacks Towards Latent Dirichlet Allocation</h3>
-        <p>Develops efficient evasion attacks using Gibbs sampling in place of inference.</p>
-      </article>
-      <article class="paper">
-        <p class="paper-meta">Computers &amp; Security · 2020 <span>· First author</span></p>
-        <h3>Query-efficient Label-only Attacks Against Black-box Machine Learning Models</h3>
-        <p>Uses local unimodal geometry for query-efficient black-box attacks with label-only feedback.</p>
       </article>
     </section>
 
@@ -137,7 +157,7 @@
     </section>
   </main>
   <footer><span>tools-only · Hangzhou</span><a href="#about">Back to top ↑</a></footer>
-  <script src="./app.js?v=activity-1"></script>
+  <script src="./app.js?v=academic-1"></script>
   <script src="./usage.js?v=activity-1"></script>
 </body>
 </html>
